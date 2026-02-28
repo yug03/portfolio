@@ -27,8 +27,11 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    // Simulate submission — replace with your API endpoint
-    await new Promise((resolve) => setTimeout(resolve, 1200));
+    await fetch("https://formspree.io/f/mnjbrlwr", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
     setLoading(false);
     setSubmitted(true);
   };
