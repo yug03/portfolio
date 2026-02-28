@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yug Pratap Gupta | AI Automation & Business Systems Engineer</title>
+  <meta name="description" content="Senior AI Automation Engineer specializing in workflow systems, finance automation, and AI-driven business intelligence." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --canvas: #07090f;
+      --surface: #0d1117;
+      --panel: #111827;
+      --border: #1e2535;
+      --cyan: #00d4ff;
+      --gold: #f0a500;
+      --text-primary: #f0f4ff;
+      --text-secondary: #8b95a9;
+      --text-muted: #4a5568;
+    }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    body {
+      background: var(--canvas);
+      color: var(--text-primary);
+      font-family: 'DM Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      background-image:
+        radial-gradient(at 20% 10%, rgba(0,212,255,0.05) 0, transparent 50%),
+        radial-gradient(at 80% 5%, rgba(240,165,0,0.04) 0, transparent 45%),
+        radial-gradient(circle, rgba(30,37,53,0.5) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 28px 28px;
+    }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--canvas); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+    ::selection { background: rgba(0,212,255,0.2); }
+
+    /* Typography */
+    .font-display { font-family: 'Sora', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+    .gradient-cyan { background: linear-gradient(135deg, #00d4ff, #00a8cc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .gradient-gold { background: linear-gradient(135deg, #f0a500, #ffc947); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    /* Layout */
+    .max-w { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 100px 0; }
+    .section-alt { padding: 100px 0; background: rgba(13,17,23,0.3); }
+
+    /* Glass */
+    .glass {
+      background: rgba(13,17,23,0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(30,37,53,0.8);
+      border-radius: 16px;
+    }
+    .glass:hover { border-color: rgba(0,212,255,0.2); box-shadow: 0 0 30px rgba(0,212,255,0.05), 0 20px 40px rgba(0,0,0,0.25); }
+    .glass-gold:hover { border-color: rgba(240,165,0,0.2); box-shadow: 0 0 30px rgba(240,165,0,0.05), 0 20px 40px rgba(0,0,0,0.25); }
+
+    /* Section label */
+    .section-label {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+    }
+    .section-label span { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--cyan); text-transform: uppercase; letter-spacing: 0.12em; }
+    .section-label::after { content: ''; flex: 1; max-width: 80px; height: 1px; background: var(--border); }
+
+    /* Navbar */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 18px 0;
+      transition: all 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(7,9,15,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(30,37,53,0.6);
+      padding: 12px 0;
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; cursor: pointer; }
+    .nav-logo-icon {
+      width: 32px; height: 32px; border-radius: 10px;
+      background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--cyan);
+    }
+    .nav-logo-text { font-family: 'Sora', sans-serif; font-weight: 600; font-size: 13px; color: var(--text-primary); }
+    .nav-links { display: flex; gap: 4px; }
+    .nav-link {
+      padding: 8px 16px; font-size: 13px; font-weight: 500;
+      color: var(--text-secondary); text-decoration: none; border-radius: 10px;
+      cursor: pointer; transition: all 0.2s; border: none; background: none;
+    }
+    .nav-link:hover { color: var(--text-primary); background: rgba(255,255,255,0.04); }
+    .nav-link.active { color: var(--cyan); background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.15); }
+    .nav-hire {
+      padding: 8px 18px; font-size: 13px; font-weight: 500;
+      background: none; border: 1px solid rgba(0,212,255,0.3);
+      color: var(--cyan); border-radius: 10px; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .nav-hire:hover { background: rgba(0,212,255,0.08); border-color: rgba(0,212,255,0.5); }
+
+    /* Hero */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      text-align: center; padding-top: 100px; padding-bottom: 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero-glow {
+      position: absolute; border-radius: 50%; pointer-events: none;
+    }
+    .hero-glow-1 { top: 15%; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(0,212,255,0.07) 0, transparent 70%); }
+    .hero-glow-2 { bottom: 20%; right: 20%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(240,165,0,0.05) 0, transparent 70%); }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 16px; border-radius: 999px;
+      background: rgba(13,17,23,0.6); border: 1px solid var(--border);
+      font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-secondary);
+      margin-bottom: 32px;
+    }
+    .dot-green { width: 6px; height: 6px; border-radius: 50%; background: #34d399; animation: blink 2s infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    .hero-name {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(52px, 10vw, 96px);
+      font-weight: 800; line-height: 0.95; letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+    .hero-title {
+      font-size: 18px; color: var(--text-secondary); margin-bottom: 24px;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+    }
+    .hero-title .slash { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-muted); }
+    .hero-desc { max-width: 560px; margin: 0 auto 36px; font-size: 17px; color: var(--text-secondary); line-height: 1.7; font-weight: 300; }
+    .hero-desc strong { color: var(--text-primary); font-weight: 500; }
+    .hero-stats { display: flex; justify-content: center; gap: 40px; margin-bottom: 44px; flex-wrap: wrap; }
+    .hero-stat-val { font-family: 'Sora', sans-serif; font-size: 26px; font-weight: 700; }
+    .hero-stat-lbl { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+    .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 26px; background: var(--cyan); color: #07090f;
+      font-family: 'Sora', sans-serif; font-weight: 600; font-size: 14px;
+      border-radius: 12px; cursor: pointer; border: none; text-decoration: none;
+      box-shadow: 0 0 24px rgba(0,212,255,0.2); transition: all 0.2s;
+    }
+    .btn-primary:hover { background: rgba(0,212,255,0.9); transform: translateY(-1px); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 26px; background: rgba(13,17,23,0.6); backdrop-filter: blur(8px);
+      border: 1px solid var(--border); color: var(--text-primary);
+      font-family: 'Sora', sans-serif; font-weight: 500; font-size: 14px;
+      border-radius: 12px; cursor: pointer; text-decoration: none; transition: all 0.2s;
+    }
+    .btn-secondary:hover { border-color: rgba(255,255,255,0.2); }
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 26px; background: rgba(240,165,0,0.08);
+      border: 1px solid rgba(240,165,0,0.3); color: var(--gold);
+      font-family: 'Sora', sans-serif; font-weight: 500; font-size: 14px;
+      border-radius: 12px; cursor: pointer; text-decoration: none; transition: all 0.2s;
+    }
+    .btn-gold:hover { background: rgba(240,165,0,0.15); border-color: rgba(240,165,0,0.5); }
+    .scroll-hint { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); text-align: center; color: var(--text-muted); }
+    .scroll-hint span { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 6px; }
+    .scroll-arrow { animation: bounce 1.8s ease-in-out infinite; display: block; font-size: 20px; }
+    @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
+
+    /* About */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .section-h2 { font-family: 'Sora', sans-serif; font-size: clamp(28px, 4vw, 40px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 24px; }
+    .body-text { color: var(--text-secondary); line-height: 1.75; margin-bottom: 16px; }
+    .body-text strong { color: var(--text-primary); font-weight: 500; }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+    .tag {
+      padding: 6px 14px; font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      background: rgba(13,17,23,0.6); border: 1px solid var(--border);
+      color: var(--text-secondary); border-radius: 8px;
+    }
+    .pillar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .pillar-card { padding: 20px; }
+    .pillar-icon {
+      width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center;
+      justify-content: center; font-size: 20px; margin-bottom: 12px;
+    }
+    .pillar-icon.cyan { background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2); }
+    .pillar-icon.gold { background: rgba(240,165,0,0.08); border: 1px solid rgba(240,165,0,0.2); }
+    .pillar-title { font-family: 'Sora', sans-serif; font-weight: 600; font-size: 13px; margin-bottom: 8px; }
+    .pillar-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.6; }
+
+    /* Skills */
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .skill-card { padding: 24px; }
+    .skill-cat-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .skill-icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; font-size: 16px;
+    }
+    .skill-icon.cyan { background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2); }
+    .skill-icon.gold { background: rgba(240,165,0,0.08); border: 1px solid rgba(240,165,0,0.2); }
+    .skill-cat-label { font-family: 'Sora', sans-serif; font-weight: 600; font-size: 13px; }
+    .skill-item { margin-bottom: 16px; }
+    .skill-row { display: flex; justify-content: space-between; margin-bottom: 6px; }
+    .skill-name { font-size: 13px; color: var(--text-secondary); }
+    .skill-pct { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-muted); }
+    .skill-bar-bg { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+    .skill-bar { height: 100%; border-radius: 3px; transition: width 1s ease; }
+    .skill-bar.cyan { background: linear-gradient(90deg, rgba(0,212,255,0.7), var(--cyan)); }
+    .skill-bar.gold { background: linear-gradient(90deg, rgba(240,165,0,0.7), var(--gold)); }
+
+    /* Projects */
+    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .project-card { padding: 28px; position: relative; overflow: hidden; cursor: pointer; }
+    .project-tag {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase;
+      letter-spacing: 0.1em; margin-bottom: 4px; display: block;
+    }
+    .project-tag.cyan { color: var(--cyan); }
+    .project-tag.gold { color: var(--gold); }
+    .project-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted); }
+    .project-icon {
+      width: 44px; height: 44px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center; font-size: 22px;
+      margin-bottom: 16px;
+    }
+    .project-icon.cyan { background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2); }
+    .project-icon.gold { background: rgba(240,165,0,0.08); border: 1px solid rgba(240,165,0,0.2); }
+    .project-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 16px; margin-bottom: 6px; line-height: 1.3; }
+    .project-subtitle { font-size: 13px; color: var(--text-secondary); margin-bottom: 16px; }
+    .stack-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+    .stack-pill {
+      padding: 4px 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px;
+      background: var(--panel); border: 1px solid var(--border);
+      color: var(--text-muted); border-radius: 6px;
+    }
+    .impact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px; }
+    .impact-pill {
+      padding: 10px 12px; font-size: 11px; line-height: 1.4; border-radius: 10px;
+    }
+    .impact-pill.cyan { background: rgba(0,212,255,0.06); border: 1px solid rgba(0,212,255,0.15); color: var(--cyan); }
+    .impact-pill.gold { background: rgba(240,165,0,0.06); border: 1px solid rgba(240,165,0,0.15); color: var(--gold); }
+    .project-expand { font-size: 12px; color: var(--text-secondary); cursor: pointer; background: none; border: none; display: flex; align-items: center; gap: 6px; }
+    .project-expand:hover { color: var(--text-primary); }
+    .expanded-section { border-top: 1px solid rgba(30,37,53,0.6); margin-top: 16px; padding-top: 16px; display: none; }
+    .expanded-section.open { display: block; }
+    .exp-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+    .exp-dot { width: 6px; height: 6px; border-radius: 50%; }
+    .exp-text { font-size: 13px; color: var(--text-secondary); line-height: 1.65; margin-bottom: 16px; padding-left: 12px; }
+    .exp-text.red-border { border-left: 2px solid rgba(248,113,113,0.4); }
+    .exp-text.green-border { border-left: 2px solid rgba(52,211,153,0.4); }
+    .exp-arch { padding: 12px 16px; background: var(--canvas); border: 1px solid var(--border); border-radius: 10px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-secondary); margin-bottom: 16px; }
+
+    /* Experience */
+    .timeline { position: relative; padding-left: 40px; }
+    .timeline::before {
+      content: ''; position: absolute; left: 16px; top: 0; bottom: 0;
+      width: 1px; background: linear-gradient(to bottom, transparent, var(--border) 10%, var(--border) 90%, transparent);
+    }
+    .timeline-item { position: relative; margin-bottom: 40px; }
+    .timeline-dot {
+      position: absolute; left: -40px; top: 6px;
+      width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--border);
+      background: var(--panel); display: flex; align-items: center; justify-content: center;
+    }
+    .timeline-dot.active { border-color: var(--cyan); background: rgba(0,212,255,0.1); }
+    .timeline-dot.gold { border-color: rgba(240,165,0,0.6); background: rgba(240,165,0,0.08); }
+    .timeline-dot-inner { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); animation: blink 2.5s infinite; }
+    .exp-card { padding: 28px 32px; }
+    .exp-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; flex-wrap: wrap; gap: 12px; }
+    .exp-role { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 16px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .current-badge {
+      padding: 2px 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px;
+      background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.25);
+      color: var(--cyan); border-radius: 999px;
+    }
+    .exp-company { font-size: 13px; color: var(--text-secondary); margin-top: 2px; }
+    .exp-meta { text-align: right; }
+    .exp-period { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-muted); }
+    .exp-loc { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+    .exp-divider { height: 1px; background: rgba(30,37,53,0.6); margin: 16px 0; }
+    .impact-list { list-style: none; }
+    .impact-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 14px; color: var(--text-secondary); line-height: 1.65; margin-bottom: 10px;
+    }
+    .bullet-dot { width: 6px; height: 6px; border-radius: 50%; margin-top: 8px; flex-shrink: 0; }
+    .bullet-dot.cyan { background: var(--cyan); }
+    .bullet-dot.gold { background: var(--gold); }
+
+    /* Certs */
+    .cert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .cert-card { padding: 28px; }
+    .cert-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+    .cert-badge-wrap { display: flex; align-items: center; gap: 16px; }
+    .cert-badge {
+      width: 56px; height: 56px; border-radius: 16px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 500;
+    }
+    .cert-badge.cyan { background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.25); color: var(--cyan); }
+    .cert-badge.gold { background: rgba(240,165,0,0.08); border: 1px solid rgba(240,165,0,0.25); color: var(--gold); }
+    .cert-badge-icon { font-size: 22px; margin-bottom: 2px; }
+    .cert-issuer { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted); margin-bottom: 4px; }
+    .cert-name { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 15px; line-height: 1.3; }
+    .cert-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.65; margin-bottom: 16px; }
+    .cert-skills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+    .cert-skill {
+      padding: 4px 10px; font-family: 'JetBrains Mono', monospace; font-size: 10px;
+      border-radius: 6px;
+    }
+    .cert-skill.cyan { background: rgba(0,212,255,0.06); border: 1px solid rgba(0,212,255,0.2); color: rgba(0,212,255,0.8); }
+    .cert-skill.gold { background: rgba(240,165,0,0.06); border: 1px solid rgba(240,165,0,0.2); color: rgba(240,165,0,0.8); }
+    .cert-link { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-muted); text-decoration: none; display: flex; align-items: center; gap: 6px; }
+    .cert-link:hover { color: var(--text-secondary); }
+
+    /* Solutions */
+    .solutions-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .sol-card { padding: 20px; }
+    .sol-icon {
+      width: 40px; height: 40px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; font-size: 18px;
+      margin-bottom: 14px; transition: transform 0.3s;
+    }
+    .sol-card:hover .sol-icon { transform: scale(1.1); }
+    .sol-icon.cyan { background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2); }
+    .sol-icon.gold { background: rgba(240,165,0,0.08); border: 1px solid rgba(240,165,0,0.2); }
+    .sol-title { font-family: 'Sora', sans-serif; font-weight: 600; font-size: 13px; margin-bottom: 8px; line-height: 1.3; }
+    .sol-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+    .sol-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+    .sol-tag { padding: 3px 8px; font-family: 'JetBrains Mono', monospace; font-size: 10px; background: var(--panel); border: 1px solid var(--border); color: var(--text-muted); border-radius: 4px; }
+
+    /* Contact */
+    .contact-grid { display: grid; grid-template-columns: 2fr 3fr; gap: 40px; align-items: start; }
+    .contact-link { display: flex; align-items: center; gap: 16px; padding: 16px; margin-bottom: 12px; text-decoration: none; }
+    .contact-icon {
+      width: 40px; height: 40px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; font-size: 18px;
+    }
+    .contact-icon.cyan { background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2); }
+    .contact-icon.gold { background: rgba(240,165,0,0.08); border: 1px solid rgba(240,165,0,0.2); }
+    .contact-type { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); }
+    .contact-value { font-size: 14px; color: var(--text-primary); font-weight: 500; margin-top: 2px; }
+    .contact-arrow { margin-left: auto; font-size: 14px; color: var(--text-muted); transition: all 0.2s; }
+    .contact-link:hover .contact-arrow { color: var(--cyan); transform: translateX(4px); }
+    .avail-box { padding: 16px 20px; background: rgba(52,211,153,0.05); border: 1px solid rgba(52,211,153,0.15); border-radius: 14px; margin-top: 16px; }
+    .avail-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .avail-dot { width: 8px; height: 8px; border-radius: 50%; background: #34d399; animation: blink 2s infinite; }
+    .avail-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #34d399; text-transform: uppercase; letter-spacing: 0.1em; }
+    .avail-text { font-size: 12px; color: var(--text-secondary); line-height: 1.6; }
+    .contact-form-card { padding: 28px 32px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .form-field { margin-bottom: 16px; }
+    .form-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); display: block; margin-bottom: 8px; }
+    .form-label .req { color: var(--cyan); }
+    .form-input, .form-textarea {
+      width: 100%; padding: 12px 16px; background: var(--panel);
+      border: 1px solid var(--border); border-radius: 12px;
+      font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text-primary);
+      transition: all 0.2s; outline: none; resize: none;
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: var(--text-muted); }
+    .form-input:focus, .form-textarea:focus { border-color: rgba(0,212,255,0.4); box-shadow: 0 0 0 3px rgba(0,212,255,0.06); }
+    .form-submit {
+      width: 100%; padding: 14px; background: var(--cyan); color: var(--canvas);
+      font-family: 'Sora', sans-serif; font-weight: 600; font-size: 14px;
+      border: none; border-radius: 12px; cursor: pointer;
+      box-shadow: 0 0 24px rgba(0,212,255,0.2); transition: all 0.2s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .form-submit:hover { background: rgba(0,212,255,0.9); transform: translateY(-1px); }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--border); padding: 40px 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+    .footer-brand { display: flex; align-items: center; gap: 12px; }
+    .footer-nav { display: flex; gap: 24px; }
+    .footer-nav a { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-muted); text-decoration: none; cursor: pointer; transition: color 0.2s; }
+    .footer-nav a:hover { color: var(--text-secondary); }
+    .footer-back {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 16px; background: rgba(13,17,23,0.6); border: 1px solid var(--border);
+      color: var(--text-muted); font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      border-radius: 8px; cursor: pointer; transition: all 0.2s; text-decoration: none;
+    }
+    .footer-back:hover { color: var(--text-secondary); }
+    .footer-copy { text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-muted); margin-top: 28px; padding-top: 20px; border-top: 1px solid rgba(30,37,53,0.4); }
+
+    /* Animations */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-left { opacity: 0; transform: translateX(-30px); transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+    .fade-left.visible { opacity: 1; transform: translateX(0); }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .solutions-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .about-grid, .cert-grid, .contact-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .solutions-grid { grid-template-columns: 1fr 1fr; }
+      .pillar-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links, .nav-hire { display: none; }
+      .hero-stats { gap: 20px; }
+      .form-row { grid-template-columns: 1fr; }
+      .exp-header { flex-direction: column; }
+      .exp-meta { text-align: left; }
+    }
+    @media (max-width: 480px) {
+      .solutions-grid { grid-template-columns: 1fr; }
+      .pillar-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="max-w nav-inner">
+    <a class="nav-logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+      <div class="nav-logo-icon">⚡</div>
+      <span class="nav-logo-text">YPG</span>
+    </a>
+    <div class="nav-links">
+      <button class="nav-link" onclick="scrollTo('about')">About</button>
+      <button class="nav-link" onclick="scrollTo('skills')">Skills</button>
+      <button class="nav-link" onclick="scrollTo('projects')">Projects</button>
+      <button class="nav-link" onclick="scrollTo('experience')">Experience</button>
+      <button class="nav-link" onclick="scrollTo('solutions')">Solutions</button>
+      <button class="nav-link" onclick="scrollTo('contact')">Contact</button>
+    </div>
+    <button class="nav-hire" onclick="scrollTo('contact')">Hire Me</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow hero-glow-1"></div>
+  <div class="hero-glow hero-glow-2"></div>
+  <div style="position:relative;z-index:1">
+    <div class="hero-badge">
+      <span class="dot-green"></span>
+      Available for new opportunities
+      <span style="color:var(--text-muted);margin:0 4px">·</span>
+      📍 Gurgaon, India
+    </div>
+    <h1 class="hero-name font-display">
+      <span style="color:var(--text-primary)">Yug Pratap</span><br>
+      <span class="gradient-cyan">Gupta</span>
+    </h1>
+    <div class="hero-title">
+      <span class="slash">//</span>
+      <span>AI Automation & Business Systems Engineer</span>
+      <span class="slash">//</span>
+    </div>
+    <p class="hero-desc">
+      I design <strong>AI-driven workflow systems</strong> and
+      <strong>automation architectures</strong> that eliminate operational bottlenecks —
+      saving finance teams 40+ hours per week and reducing reconciliation errors by 95%.
+    </p>
+    <div class="hero-stats">
+      <div><div class="hero-stat-val gradient-cyan font-display">40+</div><div class="hero-stat-lbl">Hours Saved / Week</div></div>
+      <div><div class="hero-stat-val gradient-cyan font-display">95%</div><div class="hero-stat-lbl">Error Reduction</div></div>
+      <div><div class="hero-stat-val gradient-cyan font-display">12+</div><div class="hero-stat-lbl">Systems Integrated</div></div>
+      <div><div class="hero-stat-val gradient-cyan font-display">3+</div><div class="hero-stat-lbl">Years Experience</div></div>
+    </div>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="scrollTo('projects')">View Projects →</button>
+      <a class="btn-secondary" href="#">↓ Download Resume</a>
+      <button class="btn-gold" onclick="scrollTo('contact')">✉ Contact Me</button>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <span class="scroll-arrow">↓</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="max-w">
+    <div class="about-grid">
+      <div class="fade-left">
+        <div class="section-label"><span>01 — About</span></div>
+        <h2 class="section-h2 font-display">
+          Engineering systems that <span class="gradient-cyan">think,</span><br>
+          so your teams <span class="gradient-gold">don't have to.</span>
+        </h2>
+        <p class="body-text">I'm Yug — a Business Systems Engineer with a focus on making AI work inside real-world financial and operational environments. I bridge the gap between advanced AI tooling and the messy reality of enterprise workflows.</p>
+        <p class="body-text">My background spans <strong>NBFC operations, SaaS platforms, and fintech infrastructure</strong> — which means I understand both the technical architecture and the business pain behind manual processes. I don't just automate tasks; I redesign the systems around them.</p>
+        <p class="body-text">Currently based in <strong>Gurgaon, India</strong> — working with finance-heavy companies that need scalable, reliable automation that integrates with their existing CRM, ERP, and cloud infrastructure.</p>
+        <div class="tag-list">
+          <span class="tag">Finance Automation</span>
+          <span class="tag">AI Systems</span>
+          <span class="tag">NBFC Domain</span>
+          <span class="tag">Cloud Architecture</span>
+          <span class="tag">Python</span>
+          <span class="tag">Workflow Design</span>
+        </div>
+      </div>
+      <div class="pillar-grid fade-in">
+        <div class="pillar-card glass">
+          <div class="pillar-icon cyan">🧠</div>
+          <div class="pillar-title font-display">AI Integration</div>
+          <div class="pillar-desc">Embedding LLMs, document parsers, and intelligent agents into enterprise workflows to automate decision-heavy processes.</div>
+        </div>
+        <div class="pillar-card glass">
+          <div class="pillar-icon gold">⚙️</div>
+          <div class="pillar-title font-display">Process Automation</div>
+          <div class="pillar-desc">End-to-end workflow automation using n8n, Make, and custom Python pipelines — from data ingestion to ERP sync.</div>
+        </div>
+        <div class="pillar-card glass">
+          <div class="pillar-icon cyan">📊</div>
+          <div class="pillar-title font-display">Finance Systems</div>
+          <div class="pillar-desc">Deep domain expertise in NBFC operations, reconciliation workflows, KPI dashboards, and compliance automation.</div>
+        </div>
+        <div class="pillar-card glass">
+          <div class="pillar-icon gold">🎯</div>
+          <div class="pillar-title font-display">Business Impact</div>
+          <div class="pillar-desc">Every system I build is measured against business outcomes — reduced headcount dependency, faster cycles, higher accuracy.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section-alt">
+  <div class="max-w">
+    <div class="section-label fade-in"><span>02 — Skills</span></div>
+    <h2 class="section-h2 font-display fade-in" style="margin-bottom:12px">Technical <span class="gradient-cyan">Arsenal</span></h2>
+    <p class="body-text fade-in" style="margin-bottom:48px;max-width:500px">A full-stack of automation capabilities — from scripting and cloud infrastructure to domain-specific finance knowledge.</p>
+    <div class="skills-grid">
+      <div class="skill-card glass fade-in">
+        <div class="skill-cat-header">
+          <div class="skill-icon cyan">💻</div>
+          <span class="skill-cat-label font-display">Programming</span>
+        </div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Python</span><span class="skill-pct">92%</span></div><div class="skill-bar-bg"><div class="skill-bar cyan" style="width:92%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">SQL</span><span class="skill-pct">88%</span></div><div class="skill-bar-bg"><div class="skill-bar cyan" style="width:88%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">JavaScript</span><span class="skill-pct">72%</span></div><div class="skill-bar-bg"><div class="skill-bar cyan" style="width:72%"></div></div></div>
+      </div>
+      <div class="skill-card glass fade-in" style="transition-delay:0.1s">
+        <div class="skill-cat-header">
+          <div class="skill-icon gold">⚙️</div>
+          <span class="skill-cat-label font-display">Automation Tools</span>
+        </div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">n8n</span><span class="skill-pct">90%</span></div><div class="skill-bar-bg"><div class="skill-bar gold" style="width:90%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Make (Integromat)</span><span class="skill-pct">88%</span></div><div class="skill-bar-bg"><div class="skill-bar gold" style="width:88%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Zapier</span><span class="skill-pct">85%</span></div><div class="skill-bar-bg"><div class="skill-bar gold" style="width:85%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">UiPath</span><span class="skill-pct">75%</span></div><div class="skill-bar-bg"><div class="skill-bar gold" style="width:75%"></div></div></div>
+      </div>
+      <div class="skill-card glass fade-in" style="transition-delay:0.2s">
+        <div class="skill-cat-header">
+          <div class="skill-icon cyan">☁️</div>
+          <span class="skill-cat-label font-display">Cloud & APIs</span>
+        </div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Google Cloud Platform</span><span class="skill-pct">82%</span></div><div class="skill-bar-bg"><div class="skill-bar cyan" style="width:82%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">REST APIs / Webhooks</span><span class="skill-pct">90%</span></div><div class="skill-bar-bg"><div class="skill-bar cyan" style="width:90%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">BigQuery</span><span class="skill-pct">78%</span></div><div class="skill-bar-bg"><div class="skill-bar cyan" style="width:78%"></div></div></div>
+      </div>
+      <div class="skill-card glass fade-in" style="transition-delay:0.3s">
+        <div class="skill-cat-header">
+          <div class="skill-icon gold">📊</div>
+          <span class="skill-cat-label font-display">Analytics & BI</span>
+        </div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Power BI</span><span class="skill-pct">85%</span></div><div class="skill-bar-bg"><div class="skill-bar gold" style="width:85%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Advanced Excel</span><span class="skill-pct">92%</span></div><div class="skill-bar-bg"><div class="skill-bar gold" style="width:92%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Google Looker Studio</span><span class="skill-pct">80%</span></div><div class="skill-bar-bg"><div class="skill-bar gold" style="width:80%"></div></div></div>
+      </div>
+      <div class="skill-card glass fade-in" style="transition-delay:0.4s">
+        <div class="skill-cat-header">
+          <div class="skill-icon cyan">🏦</div>
+          <span class="skill-cat-label font-display">Domain Expertise</span>
+        </div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Finance Ops & Reconciliation</span><span class="skill-pct">94%</span></div><div class="skill-bar-bg"><div class="skill-bar cyan" style="width:94%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">NBFC KPIs & Compliance</span><span class="skill-pct">90%</span></div><div class="skill-bar-bg"><div class="skill-bar cyan" style="width:90%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">CRM / ERP Systems</span><span class="skill-pct">85%</span></div><div class="skill-bar-bg"><div class="skill-bar cyan" style="width:85%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">AI Prompt Engineering</span><span class="skill-pct">88%</span></div><div class="skill-bar-bg"><div class="skill-bar cyan" style="width:88%"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section">
+  <div class="max-w">
+    <div class="section-label fade-in"><span>03 — Projects</span></div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:48px" class="fade-in">
+      <h2 class="section-h2 font-display" style="margin-bottom:0">Case Studies & <span class="gradient-cyan">System Builds</span></h2>
+      <p style="font-size:13px;color:var(--text-secondary);max-width:280px">Each project is a documented architecture — problem, solution, and measured results.</p>
+    </div>
+    <div class="projects-grid">
+
+      <!-- Project 1 -->
+      <div class="project-card glass fade-in">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px">
+          <div>
+            <span class="project-tag cyan">Finance Automation</span>
+            <span class="project-num font-mono">Case Study 01</span>
+          </div>
+        </div>
+        <div class="project-icon cyan">📈</div>
+        <div class="project-title font-display">AI Finance Reconciliation Automation</div>
+        <div class="project-subtitle">End-to-end automated reconciliation for NBFC back-office</div>
+        <div class="stack-pills">
+          <span class="stack-pill">Python</span><span class="stack-pill">OpenAI API</span><span class="stack-pill">GCP</span><span class="stack-pill">BigQuery</span><span class="stack-pill">Power BI</span>
+        </div>
+        <div class="impact-grid">
+          <div class="impact-pill cyan">Reconciliation: 6hrs → 18 min daily</div>
+          <div class="impact-pill cyan">Error rate: 15% → under 1%</div>
+        </div>
+        <button class="project-expand" onclick="toggleExpand('p1')">View full case study ↓</button>
+        <div class="expanded-section" id="p1">
+          <div class="exp-label"><span class="exp-dot" style="background:#f87171"></span>Problem</div>
+          <div class="exp-text red-border">A mid-size NBFC was spending 6+ hours daily on manual reconciliation across 4 data sources — bank statements, internal ledger, Zoho CRM, and Excel dumps. The process had a 12–15% error rate, causing compliance delays and audit backlogs.</div>
+          <div class="exp-label"><span class="exp-dot" style="background:#34d399"></span>Solution</div>
+          <div class="exp-text green-border">Built a Python-based pipeline that ingests data from all 4 sources via APIs and file parsers, runs AI-driven fuzzy matching with OpenAI embeddings, flags anomalies, auto-reconciles matching entries, and pushes a clean report to Google Sheets and Power BI. Deployed on GCP with daily scheduled triggers.</div>
+          <div class="exp-label">🔷 Architecture</div>
+          <div class="exp-arch">Event-driven pipeline → multi-source ingestion → AI entity resolution → layered validation → report generation</div>
+          <div class="exp-label"><span class="exp-dot" style="background:var(--cyan)"></span>Business Impact</div>
+          <ul style="list-style:none;padding-left:12px">
+            <li style="font-size:13px;color:var(--text-secondary);margin-bottom:6px">→ Reconciliation time: 6 hours → 18 minutes daily</li>
+            <li style="font-size:13px;color:var(--text-secondary);margin-bottom:6px">→ Error rate dropped from 15% to under 1%</li>
+            <li style="font-size:13px;color:var(--text-secondary);margin-bottom:6px">→ Freed 2 FTEs for higher-value finance tasks</li>
+            <li style="font-size:13px;color:var(--text-secondary)">→ Automated compliance report generation</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card glass fade-in" style="transition-delay:0.15s">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px">
+          <div>
+            <span class="project-tag gold">AI / ML System</span>
+            <span class="project-num font-mono">Case Study 02</span>
+          </div>
+        </div>
+        <div class="project-icon gold">🧠</div>
+        <div class="project-title font-display">Sales & Marketing Recommendation System</div>
+        <div class="project-subtitle">Intelligent lead scoring and campaign optimization engine</div>
+        <div class="stack-pills">
+          <span class="stack-pill">Python</span><span class="stack-pill">scikit-learn</span><span class="stack-pill">HubSpot API</span><span class="stack-pill">Make</span><span class="stack-pill">PostgreSQL</span>
+        </div>
+        <div class="impact-grid">
+          <div class="impact-pill gold">Conversion: 3% → 9.4% in 60 days</div>
+          <div class="impact-pill gold">CAC reduced by 38%</div>
+        </div>
+        <button class="project-expand" onclick="toggleExpand('p2')">View full case study ↓</button>
+        <div class="expanded-section" id="p2">
+          <div class="exp-label"><span class="exp-dot" style="background:#f87171"></span>Problem</div>
+          <div class="exp-text red-border">A B2B SaaS company had 80,000+ leads in their CRM with no prioritization logic. Sales reps were manually picking leads, resulting in a 3% conversion rate and high CAC. Marketing campaigns were sent to static lists with no behavioral signals.</div>
+          <div class="exp-label"><span class="exp-dot" style="background:#34d399"></span>Solution</div>
+          <div class="exp-text green-border">Designed a recommendation engine using Python and scikit-learn that scores leads on 22 behavioral and demographic features. Integrated with HubSpot via API to push scores in real time. Built a campaign personalization layer that triggers tailored email workflows via Make based on score thresholds.</div>
+          <div class="exp-label">🔷 Architecture</div>
+          <div class="exp-arch">ML scoring microservice → CRM sync layer → campaign orchestration via Make → conditional branching on score bands</div>
+          <div class="exp-label"><span class="exp-dot" style="background:var(--gold)"></span>Business Impact</div>
+          <ul style="list-style:none;padding-left:12px">
+            <li style="font-size:13px;color:var(--text-secondary);margin-bottom:6px">→ Conversion rate: 3% → 9.4% in 60 days</li>
+            <li style="font-size:13px;color:var(--text-secondary);margin-bottom:6px">→ CAC reduced by 38% through intelligent targeting</li>
+            <li style="font-size:13px;color:var(--text-secondary);margin-bottom:6px">→ Sales cycle shortened by 22%</li>
+            <li style="font-size:13px;color:var(--text-secondary)">→ Real-time dashboard with lead velocity metrics</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card glass fade-in" style="transition-delay:0.3s">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px">
+          <div>
+            <span class="project-tag cyan">Workflow Integration</span>
+            <span class="project-num font-mono">Case Study 03</span>
+          </div>
+        </div>
+        <div class="project-icon cyan">🔀</div>
+        <div class="project-title font-display">CRM to ERP Workflow Automation</div>
+        <div class="project-subtitle">Seamless deal-to-invoice automation across business systems</div>
+        <div class="stack-pills">
+          <span class="stack-pill">n8n</span><span class="stack-pill">Salesforce API</span><span class="stack-pill">SAP REST API</span><span class="stack-pill">Slack API</span><span class="stack-pill">JS</span>
+        </div>
+        <div class="impact-grid">
+          <div class="impact-pill cyan">Saved 15+ hrs/week manual entry</div>
+          <div class="impact-pill cyan">Invoice: 3 days → same-day</div>
+        </div>
+        <button class="project-expand" onclick="toggleExpand('p3')">View full case study ↓</button>
+        <div class="expanded-section" id="p3">
+          <div class="exp-label"><span class="exp-dot" style="background:#f87171"></span>Problem</div>
+          <div class="exp-text red-border">A finance consulting firm was losing 15+ hours per week re-entering customer and contract data between Salesforce CRM and SAP ERP. Discrepancies caused invoice delays, revenue leakage, and repeated client escalations.</div>
+          <div class="exp-label"><span class="exp-dot" style="background:#34d399"></span>Solution</div>
+          <div class="exp-text green-border">Architected a bi-directional sync engine using n8n with custom JavaScript transformation nodes. Deals closed in Salesforce automatically trigger contract generation, approval routing via Slack bot, and invoice creation in SAP. Added an anomaly layer that routes mismatches to human-in-the-loop review.</div>
+          <div class="exp-label">🔷 Architecture</div>
+          <div class="exp-arch">Webhook trigger → transformation layer → approval orchestration → rollback-safe sync checkpoints</div>
+          <div class="exp-label"><span class="exp-dot" style="background:var(--cyan)"></span>Business Impact</div>
+          <ul style="list-style:none;padding-left:12px">
+            <li style="font-size:13px;color:var(--text-secondary);margin-bottom:6px">→ Eliminated 15 hrs/week of manual data re-entry</li>
+            <li style="font-size:13px;color:var(--text-secondary);margin-bottom:6px">→ Invoice generation: 3 days → same-day</li>
+            <li style="font-size:13px;color:var(--text-secondary);margin-bottom:6px">→ Zero revenue leakage incidents in 6 months</li>
+            <li style="font-size:13px;color:var(--text-secondary)">→ Full audit trail with sync logs and anomaly history</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="section-alt">
+  <div class="max-w">
+    <div class="section-label fade-in"><span>04 — Experience</span></div>
+    <h2 class="section-h2 font-display fade-in">Where I've Made <span class="gradient-gold">Impact</span></h2>
+    <div style="margin-top:48px">
+      <div class="timeline">
+
+        <div class="timeline-item fade-left">
+          <div class="timeline-dot active"><div class="timeline-dot-inner"></div></div>
+          <div class="exp-card glass">
+            <div class="exp-header">
+              <div>
+                <div class="exp-role font-display">Business Systems & Automation Engineer <span class="current-badge">Current</span></div>
+                <div class="exp-company">Fintech Operations Consultancy</div>
+              </div>
+              <div class="exp-meta">
+                <div class="exp-period font-mono">2023 — Present</div>
+                <div class="exp-loc font-mono">📍 Gurgaon, India</div>
+              </div>
+            </div>
+            <div class="exp-divider"></div>
+            <ul class="impact-list">
+              <li><span class="bullet-dot cyan"></span>Architected end-to-end AI reconciliation systems for 3 NBFC clients, cutting daily reconciliation time by 70–80%</li>
+              <li><span class="bullet-dot cyan"></span>Deployed n8n and Make workflows connecting Salesforce, SAP, and internal ERPs — eliminating 30+ hrs/week of manual data entry</li>
+              <li><span class="bullet-dot cyan"></span>Owned KPI dashboard infrastructure in Power BI for executive reporting, serving finance and operations leadership</li>
+              <li><span class="bullet-dot cyan"></span>Built AI-powered document classification pipeline processing 1,000+ PDFs/day with 97% extraction accuracy</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-left" style="transition-delay:0.15s">
+          <div class="timeline-dot gold"></div>
+          <div class="exp-card glass">
+            <div class="exp-header">
+              <div>
+                <div class="exp-role font-display">Data & Automation Analyst</div>
+                <div class="exp-company">NBFC — Financial Services</div>
+              </div>
+              <div class="exp-meta">
+                <div class="exp-period font-mono">2022 — 2023</div>
+                <div class="exp-loc font-mono">📍 Delhi NCR, India</div>
+              </div>
+            </div>
+            <div class="exp-divider"></div>
+            <ul class="impact-list">
+              <li><span class="bullet-dot gold"></span>Automated monthly MIS reports using Python and SQL, reducing preparation time from 2 days to 90 minutes</li>
+              <li><span class="bullet-dot gold"></span>Integrated Zoho CRM with internal loan management system via custom API, syncing 15K+ records weekly</li>
+              <li><span class="bullet-dot gold"></span>Created compliance and disbursement dashboards in Google Looker Studio used by 3 departments</li>
+              <li><span class="bullet-dot gold"></span>Reduced data discrepancy rate in collections module by 40% through automated validation scripts</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-left" style="transition-delay:0.3s">
+          <div class="timeline-dot"></div>
+          <div class="exp-card glass">
+            <div class="exp-header">
+              <div>
+                <div class="exp-role font-display">Operations & Systems Analyst</div>
+                <div class="exp-company">SaaS Platform — B2B</div>
+              </div>
+              <div class="exp-meta">
+                <div class="exp-period font-mono">2021 — 2022</div>
+                <div class="exp-loc font-mono">📍 Remote</div>
+              </div>
+            </div>
+            <div class="exp-divider"></div>
+            <ul class="impact-list">
+              <li><span class="bullet-dot cyan"></span>Built lead scoring automation in HubSpot using behavioral triggers, improving SDR efficiency by 35%</li>
+              <li><span class="bullet-dot cyan"></span>Designed onboarding workflow automation that cut customer time-to-value from 14 days to 4 days</li>
+              <li><span class="bullet-dot cyan"></span>Implemented Zapier-based integration mesh connecting 8 SaaS tools, replacing fragmented manual processes</li>
+              <li><span class="bullet-dot cyan"></span>Created SQL-based churn prediction model that identified 68% of churned accounts 30 days in advance</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" class="section">
+  <div class="max-w">
+    <div class="section-label fade-in"><span>05 — Certifications</span></div>
+    <h2 class="section-h2 font-display fade-in">Credentials & <span class="gradient-cyan">Certifications</span></h2>
+    <div style="margin-top:48px" class="cert-grid">
+
+      <div class="cert-card glass fade-in">
+        <div class="cert-top">
+          <div class="cert-badge-wrap">
+            <div class="cert-badge cyan">
+              <span class="cert-badge-icon">🏅</span>
+              <span>GCP</span>
+            </div>
+            <div>
+              <div class="cert-issuer font-mono">Google Cloud</div>
+              <div class="cert-name font-display">Associate Cloud Engineer</div>
+            </div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted)">2023</div>
+            <div style="color:var(--cyan);margin-top:4px;font-size:18px">✓</div>
+          </div>
+        </div>
+        <p class="cert-desc">Validates ability to deploy applications, monitor cloud operations, and manage enterprise cloud solutions on GCP.</p>
+        <div class="cert-skills">
+          <span class="cert-skill cyan">Cloud Functions</span>
+          <span class="cert-skill cyan">BigQuery</span>
+          <span class="cert-skill cyan">Cloud Run</span>
+          <span class="cert-skill cyan">IAM</span>
+          <span class="cert-skill cyan">GKE</span>
+        </div>
+        <a href="https://cloud.google.com/certification/cloud-engineer" class="cert-link font-mono" target="_blank">↗ View Credential</a>
+      </div>
+
+      <div class="cert-card glass fade-in" style="transition-delay:0.15s">
+        <div class="cert-top">
+          <div class="cert-badge-wrap">
+            <div class="cert-badge gold">
+              <span class="cert-badge-icon">📊</span>
+              <span>GDA</span>
+            </div>
+            <div>
+              <div class="cert-issuer font-mono">Google</div>
+              <div class="cert-name font-display">Data Analytics Professional</div>
+            </div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted)">2022</div>
+            <div style="color:var(--gold);margin-top:4px;font-size:18px">✓</div>
+          </div>
+        </div>
+        <p class="cert-desc">Comprehensive program covering data cleaning, analysis, visualization, SQL, R, and data-driven business decision-making.</p>
+        <div class="cert-skills">
+          <span class="cert-skill gold">SQL</span>
+          <span class="cert-skill gold">Tableau</span>
+          <span class="cert-skill gold">R</span>
+          <span class="cert-skill gold">Spreadsheets</span>
+          <span class="cert-skill gold">BigQuery</span>
+        </div>
+        <a href="https://grow.google/dataanalytics/" class="cert-link font-mono" target="_blank">↗ View Credential</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTIONS -->
+<section id="solutions" class="section-alt">
+  <div class="max-w">
+    <div class="section-label fade-in"><span>06 — Solutions</span></div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:48px" class="fade-in">
+      <h2 class="section-h2 font-display" style="margin-bottom:0">Systems I Can <span class="gradient-cyan">Build For You</span></h2>
+      <p style="font-size:13px;color:var(--text-secondary);max-width:260px">Ready-to-deploy automation solutions for finance, ops, and growth teams.</p>
+    </div>
+    <div class="solutions-grid">
+      <div class="sol-card glass fade-in"><div class="sol-icon cyan">🧾</div><div class="sol-title font-display">Finance Reconciliation Automation</div><div class="sol-desc">Multi-source reconciliation pipelines that auto-match transactions, flag anomalies, and generate audit-ready reports daily.</div><div class="sol-tags"><span class="sol-tag">Python</span><span class="sol-tag">GCP</span><span class="sol-tag">OpenAI</span></div></div>
+      <div class="sol-card glass fade-in" style="transition-delay:0.07s"><div class="sol-icon gold">🔄</div><div class="sol-title font-display">CRM Workflow Optimization</div><div class="sol-desc">Automate lead routing, deal stage progressions, follow-up sequences, and CRM-to-ERP sync without manual ops overhead.</div><div class="sol-tags"><span class="sol-tag">HubSpot</span><span class="sol-tag">Salesforce</span><span class="sol-tag">n8n</span></div></div>
+      <div class="sol-card glass fade-in" style="transition-delay:0.14s"><div class="sol-icon cyan">📄</div><div class="sol-title font-display">AI Document Parsing</div><div class="sol-desc">Intelligent extraction from invoices, loan agreements, and contracts — structured, validated, and routed automatically.</div><div class="sol-tags"><span class="sol-tag">OpenAI</span><span class="sol-tag">Python</span><span class="sol-tag">Webhooks</span></div></div>
+      <div class="sol-card glass fade-in" style="transition-delay:0.21s"><div class="sol-icon gold">📈</div><div class="sol-title font-display">KPI Dashboard Automation</div><div class="sol-desc">Auto-refreshing executive dashboards connected to your live data sources — no manual exports, no stale reports.</div><div class="sol-tags"><span class="sol-tag">Power BI</span><span class="sol-tag">BigQuery</span><span class="sol-tag">SQL</span></div></div>
+      <div class="sol-card glass fade-in" style="transition-delay:0.28s"><div class="sol-icon cyan">🔀</div><div class="sol-title font-display">CRM to ERP Integration</div><div class="sol-desc">Bidirectional sync between your CRM and ERP with transformation logic, approval gates, and error handling.</div><div class="sol-tags"><span class="sol-tag">SAP API</span><span class="sol-tag">Zapier</span><span class="sol-tag">Make</span></div></div>
+      <div class="sol-card glass fade-in" style="transition-delay:0.35s"><div class="sol-icon gold">🤖</div><div class="sol-title font-display">AI Workflow Agents</div><div class="sol-desc">Custom LLM-powered agents that handle classification, routing, summarization inside your existing business workflows.</div><div class="sol-tags"><span class="sol-tag">LangChain</span><span class="sol-tag">OpenAI</span><span class="sol-tag">Python</span></div></div>
+      <div class="sol-card glass fade-in" style="transition-delay:0.42s"><div class="sol-icon cyan">🔌</div><div class="sol-title font-display">SaaS Integration Architecture</div><div class="sol-desc">Design integration meshes connecting your core SaaS stack — from ingestion to transformation with full logging.</div><div class="sol-tags"><span class="sol-tag">REST APIs</span><span class="sol-tag">n8n</span><span class="sol-tag">Webhooks</span></div></div>
+      <div class="sol-card glass fade-in" style="transition-delay:0.49s"><div class="sol-icon gold">📊</div><div class="sol-title font-display">Sales Intelligence Automation</div><div class="sol-desc">Lead scoring, behavioral tracking, and campaign personalization engines connecting data to real-time CRM actions.</div><div class="sol-tags"><span class="sol-tag">ML</span><span class="sol-tag">Python</span><span class="sol-tag">HubSpot</span></div></div>
+    </div>
+    <div style="text-align:center;margin-top:48px" class="fade-in">
+      <p style="color:var(--text-secondary);font-size:14px;margin-bottom:16px">Have a specific automation challenge in mind?</p>
+      <button class="btn-secondary" onclick="scrollTo('contact')">Discuss Your Project →</button>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="max-w">
+    <div style="text-align:center;margin-bottom:60px" class="fade-in">
+      <div class="section-label" style="justify-content:center"><span>07 — Contact</span></div>
+      <h2 class="section-h2 font-display" style="margin-bottom:12px">Let's Build Something <span class="gradient-cyan">Meaningful</span></h2>
+      <p style="color:var(--text-secondary);font-size:15px;max-width:500px;margin:0 auto">If you're looking to automate a finance workflow, integrate your systems, or deploy an AI-powered business tool — I'd like to hear about it.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="fade-left">
+        <a href="mailto:yug@yugpratapgupta.dev" class="contact-link glass" style="text-decoration:none">
+          <div class="contact-icon cyan">✉️</div>
+          <div><div class="contact-type font-mono">Email</div><div class="contact-value">yug@yugpratapgupta.dev</div></div>
+          <span class="contact-arrow">→</span>
+        </a>
+        <a href="https://linkedin.com/in/yugpratapgupta" target="_blank" class="contact-link glass" style="text-decoration:none">
+          <div class="contact-icon gold">💼</div>
+          <div><div class="contact-type font-mono">LinkedIn</div><div class="contact-value">/in/yugpratapgupta</div></div>
+          <span class="contact-arrow">→</span>
+        </a>
+        <div class="contact-link glass" style="cursor:default">
+          <div class="contact-icon" style="background:rgba(255,255,255,0.04);border:1px solid var(--border)">📍</div>
+          <div><div class="contact-type font-mono">Location</div><div class="contact-value">Gurgaon, Haryana, India</div></div>
+        </div>
+        <div class="avail-box">
+          <div class="avail-header"><span class="avail-dot"></span><span class="avail-label font-mono">Available for Projects</span></div>
+          <div class="avail-text">Open to full-time roles, consulting engagements, and project-based contracts with fintech, SaaS, and operations-heavy companies.</div>
+        </div>
+      </div>
+      <div class="contact-form-card glass fade-in">
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label font-mono">Name <span class="req">*</span></label>
+            <input type="text" class="form-input" placeholder="Your name" />
+          </div>
+          <div class="form-field">
+            <label class="form-label font-mono">Email <span class="req">*</span></label>
+            <input type="email" class="form-input" placeholder="your@email.com" />
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-label font-mono">Company / Organization</label>
+          <input type="text" class="form-input" placeholder="Company name (optional)" />
+        </div>
+        <div class="form-field">
+          <label class="form-label font-mono">Message <span class="req">*</span></label>
+          <textarea class="form-textarea" rows="5" placeholder="Describe what you're trying to automate or solve..."></textarea>
+        </div>
+        <button class="form-submit" onclick="handleFormSubmit(this)">
+          <span>✉</span> Send Message
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="max-w">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="nav-logo-icon">⚡</div>
+        <div>
+          <div style="font-family:'Sora',sans-serif;font-weight:600;font-size:14px">Yug Pratap Gupta</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted);margin-top:2px">AI Automation & Business Systems Engineer</div>
+        </div>
+      </div>
+      <nav class="footer-nav">
+        <a onclick="scrollTo('about')">About</a>
+        <a onclick="scrollTo('skills')">Skills</a>
+        <a onclick="scrollTo('projects')">Projects</a>
+        <a onclick="scrollTo('contact')">Contact</a>
+      </nav>
+      <a class="footer-back" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Back to top</a>
+    </div>
+    <div class="footer-copy">© 2025 Yug Pratap Gupta. Built with Next.js 14 + Framer Motion.</div>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  // Smooth scroll helper
+  function scrollTo(id) {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // Project expand/collapse
+  function toggleExpand(id) {
+    const el = document.getElementById(id);
+    const btn = el.previousElementSibling;
+    const isOpen = el.classList.toggle('open');
+    btn.textContent = isOpen ? 'Hide details ↑' : 'View full case study ↓';
+  }
+
+  // Form submit simulation
+  function handleFormSubmit(btn) {
+    btn.disabled = true;
+    btn.innerHTML = '<div style="width:16px;height:16px;border:2px solid rgba(7,9,15,0.3);border-top-color:#07090f;border-radius:50%;animation:spin 0.7s linear infinite"></div> Sending...';
+    setTimeout(() => {
+      const form = btn.closest('.contact-form-card');
+      form.innerHTML = `<div style="min-height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;text-align:center">
+        <div style="width:64px;height:64px;border-radius:16px;background:rgba(52,211,153,0.08);border:1px solid rgba(52,211,153,0.2);display:flex;align-items:center;justify-content:center;font-size:28px">✓</div>
+        <div>
+          <h3 style="font-family:'Sora',sans-serif;font-weight:700;font-size:20px;margin-bottom:8px">Message Sent!</h3>
+          <p style="font-size:13px;color:var(--text-secondary);max-width:280px">Thanks for reaching out. I'll review your message and get back to you within 24 hours.</p>
+        </div>
+      </div>`;
+    }, 1200);
+  }
+
+  // Intersection observer for fade animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '-40px' });
+
+  document.querySelectorAll('.fade-in, .fade-left').forEach(el => observer.observe(el));
+
+  // CSS for spin animation
+  const style = document.createElement('style');
+  style.textContent = '@keyframes spin { to { transform: rotate(360deg); } }';
+  document.head.appendChild(style);
+</script>
+</body>
+</html>
