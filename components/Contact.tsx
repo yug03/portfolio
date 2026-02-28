@@ -3,7 +3,7 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { Mail, Linkedin, MapPin, Send, CheckCircle2, ArrowRight } from "lucide-react";
+import { Mail, Linkedin, MapPin, Phone, Send, CheckCircle2, ArrowRight } from "lucide-react";
 
 export default function Contact() {
   const ref = useRef(null);
@@ -40,7 +40,8 @@ export default function Contact() {
     <section id="contact" className="section-padding">
       <div className="max-w-6xl mx-auto px-6">
         <div ref={ref} className="space-y-12">
-          {/* Header */}
+
+          {/* ── Header ── */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -59,23 +60,26 @@ export default function Contact() {
               <span className="gradient-text-cyan">Meaningful</span>
             </h2>
             <p className="text-text-secondary text-base max-w-xl mx-auto">
-              If you&apos;re looking to automate a finance workflow, integrate your systems, or
-              deploy an AI-powered business tool — I&apos;d like to hear about it.
+              If you&apos;re looking to automate a finance workflow, integrate your
+              systems, or deploy an AI-powered business tool — I&apos;d like to hear
+              about it.
             </p>
           </motion.div>
 
           <div className="grid lg:grid-cols-5 gap-10">
-            {/* Left: Info */}
+
+            {/* ── Left: Contact Info ── */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="lg:col-span-2 space-y-8"
             >
-              {/* Contact links */}
               <div className="space-y-4">
+
+                {/* Email */}
                 <a
-                  href="mailto:yug@example.com"
+                  href="mailto:yugpratapgupta00@gmail.com"
                   className="flex items-center gap-4 p-4 glass glass-hover rounded-2xl group"
                 >
                   <div className="w-10 h-10 rounded-xl bg-cyan-soft border border-cyan-accent/25 flex items-center justify-center">
@@ -86,7 +90,7 @@ export default function Contact() {
                       Email
                     </p>
                     <p className="text-sm text-text-primary font-medium">
-                      yug@yugpratapgupta.dev
+                      yugpratapgupta00@gmail.com
                     </p>
                   </div>
                   <ArrowRight
@@ -95,8 +99,9 @@ export default function Contact() {
                   />
                 </a>
 
+                {/* LinkedIn */}
                 <a
-                  href="https://linkedin.com/in/yugpratapgupta"
+                  href="https://www.linkedin.com/in/iamyug/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 p-4 glass glass-hover rounded-2xl group"
@@ -109,7 +114,7 @@ export default function Contact() {
                       LinkedIn
                     </p>
                     <p className="text-sm text-text-primary font-medium">
-                      /in/yugpratapgupta
+                      /in/iamyug
                     </p>
                   </div>
                   <ArrowRight
@@ -118,6 +123,29 @@ export default function Contact() {
                   />
                 </a>
 
+                {/* Phone */}
+                <a
+                  href="tel:+919827794479"
+                  className="flex items-center gap-4 p-4 glass glass-hover rounded-2xl group"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-cyan-soft border border-cyan-accent/25 flex items-center justify-center">
+                    <Phone size={18} className="text-cyan-accent" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-mono text-text-muted uppercase tracking-wide">
+                      Phone
+                    </p>
+                    <p className="text-sm text-text-primary font-medium">
+                      +91 98277 94479
+                    </p>
+                  </div>
+                  <ArrowRight
+                    size={16}
+                    className="ml-auto text-text-muted group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"
+                  />
+                </a>
+
+                {/* Location */}
                 <div className="flex items-center gap-4 p-4 glass rounded-2xl">
                   <div className="w-10 h-10 rounded-xl bg-panel border border-border flex items-center justify-center">
                     <MapPin size={18} className="text-text-secondary" />
@@ -131,9 +159,10 @@ export default function Contact() {
                     </p>
                   </div>
                 </div>
+
               </div>
 
-              {/* Availability note */}
+              {/* Availability badge */}
               <div className="px-5 py-4 rounded-2xl bg-emerald-500/5 border border-emerald-500/15">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
@@ -143,12 +172,13 @@ export default function Contact() {
                 </div>
                 <p className="text-xs text-text-secondary">
                   Open to full-time roles, consulting engagements, and
-                  project-based contracts with fintech, SaaS, and operations-heavy companies.
+                  project-based contracts with fintech, SaaS, and
+                  operations-heavy companies.
                 </p>
               </div>
             </motion.div>
 
-            {/* Right: Form */}
+            {/* ── Right: Contact Form ── */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -156,6 +186,8 @@ export default function Contact() {
               className="lg:col-span-3"
             >
               {submitted ? (
+
+                /* Success state */
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -169,8 +201,8 @@ export default function Contact() {
                       Message Sent!
                     </h3>
                     <p className="text-text-secondary text-sm mt-2 max-w-xs">
-                      Thanks for reaching out. I&apos;ll review your message and get back
-                      to you within 24 hours.
+                      Thanks for reaching out. I&apos;ll review your message
+                      and get back to you within 24 hours.
                     </p>
                   </div>
                   <button
@@ -183,12 +215,16 @@ export default function Contact() {
                     Send another message
                   </button>
                 </motion.div>
+
               ) : (
+
+                /* Form */
                 <form
                   onSubmit={handleSubmit}
                   className="glass rounded-2xl p-7 md:p-8 space-y-5"
                 >
                   <div className="grid sm:grid-cols-2 gap-5">
+
                     {/* Name */}
                     <div className="space-y-2">
                       <label className="text-xs font-mono text-text-muted uppercase tracking-wide">
@@ -220,6 +256,7 @@ export default function Contact() {
                         className="w-full px-4 py-3 rounded-xl bg-panel border border-border text-sm text-text-primary placeholder-text-muted focus:outline-none focus:border-cyan-accent/50 focus:ring-1 focus:ring-cyan-accent/20 transition-all"
                       />
                     </div>
+
                   </div>
 
                   {/* Company */}
@@ -276,8 +313,10 @@ export default function Contact() {
                     )}
                   </button>
                 </form>
+
               )}
             </motion.div>
+
           </div>
         </div>
       </div>
