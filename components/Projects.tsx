@@ -4,9 +4,12 @@ import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "framer-motion";
 import {
+  BarChart3,
+  Globe,
+  ShoppingCart,
+  Users,
+  Bot,
   TrendingUp,
-  Brain,
-  GitMerge,
   ChevronDown,
   ExternalLink,
   Layers,
@@ -15,68 +18,134 @@ import {
 const projects = [
   {
     id: 1,
-    icon: TrendingUp,
-    tag: "Finance Automation",
+    icon: BarChart3,
+    tag: "Manufacturing / Operations",
     color: "cyan",
-    title: "AI Finance Reconciliation Automation",
-    subtitle: "End-to-end automated reconciliation for NBFC back-office",
+    title: "Enterprise Manufacturing OEE Intelligence System",
+    subtitle: "Real-time machine-level performance monitoring for production units",
     problem:
-      "A mid-size NBFC was spending 6+ hours daily on manual reconciliation across 4 data sources — bank statements, internal ledger, Zoho CRM, and Excel dumps. The process had a 12–15% error rate, causing compliance delays and audit backlogs.",
+      "The manufacturing unit had zero real-time machine visibility, no structured tracking of productive vs outage hours, and no root cause analysis for downtime. Manual Excel-based reporting caused delayed insights, no machine-level drilldown, and reactive maintenance instead of proactive scheduling.",
     solution:
-      "Built a Python-based pipeline that ingests data from all 4 sources via APIs and file parsers, runs AI-driven fuzzy matching (with OpenAI embeddings for document classification), flags anomalies, auto-reconciles matching entries, and pushes a clean report to Google Sheets and Power BI. Deployed on GCP with daily scheduled triggers.",
-    stack: ["Python", "OpenAI API", "GCP Cloud Functions", "BigQuery", "Pandas", "Power BI", "Zoho API"],
+      "Built a Power BI OEE Intelligence System integrating production, downtime, and rejection data across all machines. Designed a full Star Schema data model with dynamic DAX measures calculating OEE = Availability × Performance × Quality. Enabled machine-wise and reason-wise breakdown with monthly, daily, and yearly slicing for executive-ready dashboards.",
+    stack: ["Power BI", "DAX", "Power Query", "SQL", "Star Schema", "ERP Integration"],
     impact: [
-      "Reduced reconciliation time from 6 hrs to 18 minutes daily",
-      "Error rate dropped from 15% to under 1%",
-      "Freed 2 FTEs for higher-value finance tasks",
-      "Automated compliance report generation — zero manual effort",
+      "Enabled machine-level bottleneck detection across all production units",
+      "Reduced downtime diagnosis time with reason-coded root cause analysis",
+      "Improved preventive maintenance scheduling — shifted from reactive to proactive",
+      "Centralized production performance monitoring for executive leadership",
     ],
-    architecture: "Event-driven pipeline with cron triggers, multi-source ingestion, AI entity resolution, and layered validation checkpoints.",
+    architecture:
+      "ERP exports (CSV/Excel) + SQL tables → Power Query ETL (null handling, normalization) → Star Schema (Fact_Production, Fact_Downtime, Fact_Rejection + Dim_Date, Dim_Machine, Dim_Reason, Dim_Product) → Power BI dashboards with dynamic slicers",
   },
   {
     id: 2,
-    icon: Brain,
-    tag: "AI / ML System",
+    icon: Globe,
+    tag: "Export / Sales Strategy",
     color: "gold",
-    title: "Sales & Marketing Recommendation System",
-    subtitle: "Intelligent lead scoring and campaign optimization engine",
+    title: "Global Export Market Intelligence & Competitive Benchmarking",
+    subtitle: "Multi-page Power BI system for export strategy and competitor analysis",
     problem:
-      "A B2B SaaS company had 80,000+ leads in their CRM with no prioritization logic. Sales reps were manually picking leads, resulting in a 3% conversion rate and high CAC. Marketing campaigns were sent to static lists with no behavioral signals.",
+      "Management had no market share tracking, region-wise export distribution, or competitor benchmarking capability. Manual reports lacked consolidation, comparative analysis, and market share calculation logic — making strategic export decisions rely on guesswork.",
     solution:
-      "Designed a recommendation engine using Python and scikit-learn that scores leads on 22 behavioral and demographic features. Integrated directly with HubSpot via API to push scores in real time. Built a campaign personalization layer that segments users into 5 tiers and triggers tailored email workflows via Make (Integromat) based on score thresholds and product usage data.",
-    stack: ["Python", "scikit-learn", "HubSpot API", "Make", "PostgreSQL", "Google Looker Studio", "Pandas"],
+      "Developed a multi-page Power BI analytics system integrating export sales data, competitor benchmarking datasets, region classification logic, and product segmentation models. Connected public trade data APIs for automated updates and built DAX measures for market share %, top 5 product ranking, and region contribution %.",
+    stack: ["Power BI", "DAX", "Power Query", "Market Trade APIs", "Star Schema"],
     impact: [
-      "Conversion rate improved from 3% to 9.4% in 60 days",
-      "CAC reduced by 38% through intelligent campaign targeting",
-      "Sales cycle shortened by 22% with high-priority lead routing",
-      "Real-time dashboard showing model confidence and lead velocity",
+      "Enabled data-backed export strategy decisions for leadership",
+      "Identified high-growth markets — APAC and MENA regions prioritized",
+      "Provided product portfolio optimization insights by region",
+      "Supported competitive positioning strategy with live benchmarking",
     ],
-    architecture: "ML scoring microservice + CRM sync layer + campaign orchestration via Make with conditional branching on score bands.",
+    architecture:
+      "Sales export reports + API market database + product master → Power Query (country-to-region mapping, currency normalization) → Star Schema (Fact_Sales, Dim_Product, Dim_Region, Dim_Country, Dim_Company) → Multi-page Power BI with dynamic year slicer",
   },
   {
     id: 3,
-    icon: GitMerge,
-    tag: "Workflow Integration",
+    icon: ShoppingCart,
+    tag: "Sales / Purchase / Production",
     color: "cyan",
-    title: "CRM to ERP Workflow Automation",
-    subtitle: "Seamless deal-to-invoice automation across business systems",
+    title: "Enterprise Commercial Performance & Operations Intelligence",
+    subtitle: "Unified BI dashboard covering sales, purchase, and production traceability",
     problem:
-      "A finance consulting firm was losing 15+ hours per week re-entering customer and contract data between Salesforce CRM and their SAP ERP system. Discrepancies caused invoice delays, revenue leakage, and repeated client escalations.",
+      "Leadership had no unified view of sales broken down by segment (Export / Domestic / Interunit), no purchase-to-sales alignment, and no production-to-sales traceability. Existing MIS was manual, time-consuming, error-prone, and offered no drilldown capability.",
     solution:
-      "Architected a bi-directional sync engine using n8n with custom JavaScript transformation nodes. Deals closed in Salesforce automatically trigger contract generation, approval routing (via Slack bot), and invoice creation in SAP. Added an anomaly layer that detects value mismatches and routes to a human-in-the-loop review queue before final sync.",
-    stack: ["n8n", "Salesforce API", "SAP REST API", "Slack API", "JavaScript", "PostgreSQL", "Webhooks"],
+      "Built an interactive Power BI dashboard integrating sales database, purchase data, production reports, customer master, and product master. Created calculated columns for segment classification, YoY growth tracking, monthly trend analysis, and top customer/product ranking via DAX RANKX.",
+    stack: ["Power BI", "DAX", "SQL", "ERP Integration", "Power Query", "Google Sheets"],
     impact: [
-      "Eliminated 15 hrs/week of manual data re-entry",
-      "Invoice generation time: 3 days → same-day automation",
-      "Zero revenue leakage incidents in 6 months post-deployment",
-      "Audit trail with full sync logs and anomaly history",
+      "Automated monthly MIS — eliminated manual report preparation",
+      "Significantly reduced reporting turnaround time across departments",
+      "Improved financial visibility with Export %, Domestic %, and Interunit split",
+      "Enabled faster commercial decisions with YoY and MTD trend comparisons",
     ],
-    architecture: "Event-driven n8n workflow with webhook triggers, transformation layer, approval orchestration, and rollback-safe sync checkpoints.",
+    architecture:
+      "Raw ERP exports → Power Query (type normalization, document classification) → Unified sales model → Relationships across Fact_Sales + Dim_Customer + Dim_Product + Dim_Date → Interactive Power BI dashboard",
+  },
+  {
+    id: 4,
+    icon: Users,
+    tag: "CRM / Customer Lifecycle",
+    color: "gold",
+    title: "CRM Revenue & Customer Intelligence Dashboard",
+    subtitle: "Full customer lifecycle analytics — funnel, retention, CLV, and churn",
+    problem:
+      "No centralized visibility into sales pipeline health, inquiry-to-order conversion, customer retention, repeat order patterns, or pocket size (average order value). Sales data was scattered across CRM with no funnel analytics, no retention tracking, and no cohort-based behavior analysis.",
+    solution:
+      "Built a CRM-driven analytics system consolidating sales, inquiries, and customer master data. Implemented full sales funnel tracking, CLV measurement, cohort analysis by first-purchase month, and retention scoring. Built DAX measures for Repeat Purchase Rate, Retention Rate, Churn Rate, Customer Lifetime Value, and Pocket Size analysis.",
+    stack: ["Power BI", "DAX", "CRM Integration", "SQL", "Power Query", "Star Schema"],
+    impact: [
+      "Identified revenue concentration — top 20% customers driving 80% revenue",
+      "Discovered and fixed drop-off stage in inquiry → proposal → closure pipeline",
+      "Detected retention gaps by region — enabled proactive churn management",
+      "Reduced manual CRM reporting and enabled data-driven growth strategy",
+    ],
+    architecture:
+      "CRM export + inquiry log + order history + customer master → Power Query ETL (customer ID standardization, stage normalization, cohort tagging) → Star Schema (Fact_Inquiries, Fact_Orders, Fact_Sales + 5 dimension tables) → Power BI revenue intelligence dashboards",
+  },
+  {
+    id: 5,
+    icon: Bot,
+    tag: "AI / Cloud Automation",
+    color: "cyan",
+    title: "AI-Driven CRM & Supplier Management System",
+    subtitle: "Automated customer and supplier analytics using AI/ML on Google Cloud",
+    problem:
+      "No unified customer and supplier analytics — procurement and sales workflows were entirely manual and unoptimized. Customer behavior was invisible, supplier performance was tracked in disconnected spreadsheets, and there was no real-time visibility into procurement decisions.",
+    solution:
+      "Built an AI/ML-powered system on Google Cloud integrating CRM data, supplier performance metrics, and procurement workflows. Used Cloud SQL for real-time data storage, Python for ML-based behavior pattern analysis, and Power BI for live dashboards. Automated customer birthday/anniversary communications, supplier TAT analysis, and raw material quality scoring (L1/L2/L3 vendor ranking).",
+    stack: ["Google Cloud", "Cloud SQL", "Python", "Power BI", "Apps Script", "ML"],
+    impact: [
+      "Real-time tracking of customer and supplier behavior patterns",
+      "Automated vendor ranking system — eliminated procurement bias",
+      "Integrated CRM automation: birthday wishes, retention alerts, buying pattern recognition",
+      "Optimized procurement workflows with automated purchase order generation",
+    ],
+    architecture:
+      "CRM + supplier data → Cloud SQL (GCP) → Python ML pipeline (behavior scoring) → Apps Script triggers → Power BI live dashboards → Automated notification system (Email/WhatsApp)",
+  },
+  {
+    id: 6,
+    icon: TrendingUp,
+    tag: "AI / NLP / Finance",
+    color: "gold",
+    title: "Stock Market Analyzer — NLP & Sentiment Analysis",
+    subtitle: "News-based stock movement prediction using NLP Transformers",
+    problem:
+      "No systematic way to gauge market sentiment from financial news for stock movement prediction. Traders and analysts were reading news manually with no structured sentiment scoring, making it impossible to quantify market mood or correlate news sentiment with price movement.",
+    solution:
+      "Developed a news-based stock market prediction model using HuggingFace Transformers for NLP sentiment analysis and BeautifulSoup for live news scraping. Extracted sentiment scores (positive/negative/neutral) from news articles for selected stocks and correlated scores with historical price movement data using Scikit-learn models.",
+    stack: ["Python", "HuggingFace Transformers", "BeautifulSoup", "Scikit-learn", "NLP", "Pandas"],
+    impact: [
+      "Automated sentiment extraction from live financial news feeds",
+      "Provided directional signals (bullish/bearish/neutral) for selected stocks",
+      "Eliminated manual news reading — full pipeline runs automatically",
+      "Built foundation for quantitative sentiment-driven trading signals",
+    ],
+    architecture:
+      "BeautifulSoup news scraper → text preprocessing → HuggingFace Transformer (sentiment classification) → Scikit-learn correlation model → sentiment score output with directional stock signal",
   },
 ];
 
 interface ProjectCardProps {
-  project: typeof projects[0];
+  project: (typeof projects)[0];
   index: number;
   isInView: boolean;
 }
@@ -88,13 +157,13 @@ function ProjectCard({ project, index, isInView }: ProjectCardProps) {
     <motion.div
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.7, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.7, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
       className={`glass glass-hover rounded-2xl overflow-hidden group transition-all duration-300 ${
         expanded ? "border-cyan-accent/20" : ""
       }`}
     >
       {/* Card header */}
-      <div className="p-6 md:p-8 space-y-5">
+      <div className="p-6 md:p-7 space-y-4">
         {/* Top row */}
         <div className="flex items-start justify-between gap-4">
           <div className="flex items-center gap-3">
@@ -120,23 +189,27 @@ function ProjectCard({ project, index, isInView }: ProjectCardProps) {
               >
                 {project.tag}
               </span>
-              <div className="text-xs text-text-muted mt-0.5">Case Study 0{project.id}</div>
+              <div className="text-xs text-text-muted mt-0.5">
+                Case Study 0{project.id}
+              </div>
             </div>
           </div>
           <div className="opacity-0 group-hover:opacity-100 transition-opacity">
-            <ExternalLink size={16} className="text-text-muted" />
+            <ExternalLink size={15} className="text-text-muted" />
           </div>
         </div>
 
         <div>
-          <h3 className="font-display font-700 text-lg md:text-xl text-text-primary leading-snug">
+          <h3 className="font-display font-700 text-base md:text-lg text-text-primary leading-snug">
             {project.title}
           </h3>
-          <p className="text-sm text-text-secondary mt-1">{project.subtitle}</p>
+          <p className="text-xs text-text-secondary mt-1 leading-relaxed">
+            {project.subtitle}
+          </p>
         </div>
 
-        {/* Tech stack pills */}
-        <div className="flex flex-wrap gap-2">
+        {/* Tech stack */}
+        <div className="flex flex-wrap gap-1.5">
           {project.stack.map((tech) => (
             <span
               key={tech}
@@ -147,12 +220,12 @@ function ProjectCard({ project, index, isInView }: ProjectCardProps) {
           ))}
         </div>
 
-        {/* Impact preview */}
-        <div className="grid grid-cols-2 gap-3">
+        {/* Impact preview — top 2 */}
+        <div className="grid grid-cols-1 gap-2">
           {project.impact.slice(0, 2).map((item, i) => (
             <div
               key={i}
-              className={`px-3 py-2.5 rounded-xl text-xs ${
+              className={`px-3 py-2 rounded-xl text-xs leading-relaxed ${
                 project.color === "cyan"
                   ? "bg-cyan-soft border border-cyan-accent/15 text-cyan-accent"
                   : "bg-gold-soft border border-gold-accent/15 text-gold-accent"
@@ -166,10 +239,13 @@ function ProjectCard({ project, index, isInView }: ProjectCardProps) {
         {/* Expand toggle */}
         <button
           onClick={() => setExpanded(!expanded)}
-          className="flex items-center gap-2 text-xs text-text-secondary hover:text-text-primary transition-colors group/btn"
+          className="flex items-center gap-2 text-xs text-text-secondary hover:text-text-primary transition-colors"
         >
           <span>{expanded ? "Hide details" : "View full case study"}</span>
-          <motion.div animate={{ rotate: expanded ? 180 : 0 }} transition={{ duration: 0.3 }}>
+          <motion.div
+            animate={{ rotate: expanded ? 180 : 0 }}
+            transition={{ duration: 0.3 }}
+          >
             <ChevronDown size={14} />
           </motion.div>
         </button>
@@ -185,7 +261,8 @@ function ProjectCard({ project, index, isInView }: ProjectCardProps) {
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             className="overflow-hidden"
           >
-            <div className="px-6 md:px-8 pb-8 space-y-6 border-t border-border/50 pt-6">
+            <div className="px-6 md:px-7 pb-7 space-y-5 border-t border-border/50 pt-5">
+
               {/* Problem */}
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
@@ -220,7 +297,7 @@ function ProjectCard({ project, index, isInView }: ProjectCardProps) {
                     Architecture
                   </h4>
                 </div>
-                <div className="px-4 py-3 rounded-xl bg-canvas border border-border font-mono text-xs text-text-secondary">
+                <div className="px-4 py-3 rounded-xl bg-canvas border border-border font-mono text-xs text-text-secondary leading-relaxed">
                   {project.architecture}
                 </div>
               </div>
@@ -239,10 +316,15 @@ function ProjectCard({ project, index, isInView }: ProjectCardProps) {
                 </div>
                 <div className="space-y-2 pl-3.5">
                   {project.impact.map((item, i) => (
-                    <div key={i} className="flex items-start gap-2 text-sm text-text-secondary">
+                    <div
+                      key={i}
+                      className="flex items-start gap-2 text-sm text-text-secondary"
+                    >
                       <span
-                        className={`mt-1.5 w-1 h-1 rounded-full flex-shrink-0 ${
-                          project.color === "cyan" ? "bg-cyan-accent" : "bg-gold-accent"
+                        className={`mt-2 w-1 h-1 rounded-full flex-shrink-0 ${
+                          project.color === "cyan"
+                            ? "bg-cyan-accent"
+                            : "bg-gold-accent"
                         }`}
                       />
                       {item}
@@ -250,6 +332,7 @@ function ProjectCard({ project, index, isInView }: ProjectCardProps) {
                   ))}
                 </div>
               </div>
+
             </div>
           </motion.div>
         )}
@@ -266,6 +349,7 @@ export default function Projects() {
     <section id="projects" className="section-padding">
       <div className="max-w-6xl mx-auto px-6">
         <div ref={ref} className="space-y-12">
+
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -285,13 +369,14 @@ export default function Projects() {
                 <span className="gradient-text-cyan">System Builds</span>
               </h2>
               <p className="text-text-secondary text-sm max-w-xs">
-                Each project is a documented architecture — problem, solution, and measured results.
+                6 real-world systems built across manufacturing, finance, CRM, AI,
+                and export intelligence.
               </p>
             </div>
           </motion.div>
 
-          {/* Project cards */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Projects grid — 2 columns on large screens */}
+          <div className="grid md:grid-cols-2 gap-6">
             {projects.map((project, index) => (
               <ProjectCard
                 key={project.id}
@@ -301,6 +386,7 @@ export default function Projects() {
               />
             ))}
           </div>
+
         </div>
       </div>
     </section>

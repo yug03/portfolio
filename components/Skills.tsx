@@ -3,59 +3,82 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Code2, Settings, Cloud, PieChart, Building2 } from "lucide-react";
+import { Code2, Settings, Cloud, PieChart, Building2, Brain } from "lucide-react";
 
 const skillCategories = [
   {
     icon: Code2,
-    label: "Programming",
+    label: "Programming & Scripting",
     color: "cyan",
     skills: [
-      { name: "Python", level: 92 },
-      { name: "SQL", level: 88 },
-      { name: "JavaScript", level: 72 },
+      { name: "Python", level: 88 },
+      { name: "SQL", level: 92 },
+      { name: "Google Apps Script", level: 90 },
+      { name: "DAX (Power BI)", level: 88 },
+      { name: "JavaScript", level: 70 },
+      { name: "R", level: 65 },
     ],
   },
   {
     icon: Settings,
-    label: "Automation Tools",
+    label: "Automation & Workflow Tools",
     color: "gold",
     skills: [
-      { name: "n8n", level: 90 },
-      { name: "Make (Integromat)", level: 88 },
-      { name: "Zapier", level: 85 },
-      { name: "UiPath", level: 75 },
-    ],
-  },
-  {
-    icon: Cloud,
-    label: "Cloud & APIs",
-    color: "cyan",
-    skills: [
-      { name: "Google Cloud Platform", level: 82 },
-      { name: "REST APIs / Webhooks", level: 90 },
-      { name: "BigQuery", level: 78 },
+      { name: "Google Apps Script + Triggers", level: 92 },
+      { name: "n8n", level: 85 },
+      { name: "Make (Integromat)", level: 83 },
+      { name: "Zapier", level: 80 },
+      { name: "UiPath", level: 72 },
+      { name: "Excel Macros / VBA", level: 78 },
     ],
   },
   {
     icon: PieChart,
-    label: "Analytics & BI",
+    label: "BI, Analytics & Visualization",
+    color: "cyan",
+    skills: [
+      { name: "Power BI + Power Query", level: 94 },
+      { name: "Advanced Excel", level: 92 },
+      { name: "Google Looker Studio", level: 85 },
+      { name: "Tableau", level: 72 },
+      { name: "SAP Analytics Cloud", level: 68 },
+    ],
+  },
+  {
+    icon: Cloud,
+    label: "Cloud & Data Infrastructure",
     color: "gold",
     skills: [
-      { name: "Power BI", level: 85 },
-      { name: "Advanced Excel", level: 92 },
-      { name: "Google Looker Studio", level: 80 },
+      { name: "Google Cloud Platform (GCP)", level: 82 },
+      { name: "Cloud SQL / BigQuery", level: 80 },
+      { name: "MS SQL Server", level: 85 },
+      { name: "REST APIs / Webhooks", level: 88 },
+      { name: "AWS (Lambda, S3, EC2)", level: 70 },
+    ],
+  },
+  {
+    icon: Brain,
+    label: "AI & Machine Learning",
+    color: "cyan",
+    skills: [
+      { name: "Predictive & Prescriptive Analytics", level: 85 },
+      { name: "NLP / Sentiment Analysis", level: 78 },
+      { name: "Scikit-learn", level: 75 },
+      { name: "OpenAI API / Prompt Engineering", level: 82 },
+      { name: "HuggingFace Transformers", level: 72 },
     ],
   },
   {
     icon: Building2,
-    label: "Domain Expertise",
-    color: "cyan",
+    label: "Domain & Business Expertise",
+    color: "gold",
     skills: [
-      { name: "Finance Ops & Reconciliation", level: 94 },
-      { name: "NBFC KPIs & Compliance", level: 90 },
-      { name: "CRM / ERP Systems", level: 85 },
-      { name: "AI Prompt Engineering", level: 88 },
+      { name: "NBFC KPIs, PAR & Collections", level: 92 },
+      { name: "Manufacturing OEE & MIS", level: 90 },
+      { name: "CRM / ERP / SAP Systems", level: 85 },
+      { name: "Finance Ops & Reconciliation", level: 88 },
+      { name: "Supply Chain & Procurement", level: 82 },
+      { name: "Project Management (Agile/Scrum)", level: 80 },
     ],
   },
 ];
@@ -70,7 +93,7 @@ interface SkillBarProps {
 
 function SkillBar({ name, level, color, delay, isInView }: SkillBarProps) {
   return (
-    <div className="space-y-2">
+    <div className="space-y-1.5">
       <div className="flex justify-between items-center">
         <span className="text-sm text-text-secondary">{name}</span>
         <span className="text-xs font-mono text-text-muted">{level}%</span>
@@ -82,8 +105,8 @@ function SkillBar({ name, level, color, delay, isInView }: SkillBarProps) {
           transition={{ duration: 1, delay, ease: [0.22, 1, 0.36, 1] }}
           className={`h-full rounded-full ${
             color === "cyan"
-              ? "bg-gradient-to-r from-cyan-accent/80 to-cyan-accent"
-              : "bg-gradient-to-r from-gold-accent/80 to-gold-accent"
+              ? "bg-gradient-to-r from-cyan-accent/70 to-cyan-accent"
+              : "bg-gradient-to-r from-gold-accent/70 to-gold-accent"
           }`}
         />
       </div>
@@ -118,8 +141,8 @@ export default function Skills() {
               <span className="gradient-text-cyan">Arsenal</span>
             </h2>
             <p className="text-text-secondary text-base">
-              A full-stack of automation capabilities — from scripting and cloud
-              infrastructure to domain-specific finance knowledge.
+              6 years of hands-on experience across programming, automation, BI, cloud,
+              AI/ML, and deep domain knowledge in NBFC and manufacturing operations.
             </p>
           </div>
 
@@ -135,12 +158,7 @@ export default function Skills() {
                   delay: catIdx * 0.1,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className={`glass glass-hover rounded-2xl p-6 space-y-5 ${
-                  catIdx === skillCategories.length - 1 &&
-                  skillCategories.length % 3 !== 0
-                    ? "md:col-span-2 lg:col-span-1"
-                    : ""
-                }`}
+                className="glass glass-hover rounded-2xl p-6 space-y-5"
               >
                 {/* Category header */}
                 <div className="flex items-center gap-3">
@@ -160,20 +178,20 @@ export default function Skills() {
                       }
                     />
                   </div>
-                  <h3 className="font-display font-600 text-sm text-text-primary">
+                  <h3 className="font-display font-600 text-sm text-text-primary leading-snug">
                     {category.label}
                   </h3>
                 </div>
 
                 {/* Skill bars */}
-                <div className="space-y-4">
+                <div className="space-y-3.5">
                   {category.skills.map((skill, skillIdx) => (
                     <SkillBar
                       key={skill.name}
                       name={skill.name}
                       level={skill.level}
                       color={category.color}
-                      delay={catIdx * 0.1 + skillIdx * 0.08 + 0.3}
+                      delay={catIdx * 0.1 + skillIdx * 0.07 + 0.3}
                       isInView={isInView}
                     />
                   ))}
@@ -181,6 +199,7 @@ export default function Skills() {
               </motion.div>
             ))}
           </div>
+
         </motion.div>
       </div>
     </section>

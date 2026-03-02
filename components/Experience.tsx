@@ -7,48 +7,43 @@ import { Calendar, MapPin } from "lucide-react";
 
 const experiences = [
   {
-    role: "Business Systems & Automation Engineer",
-    company: "Fintech Operations Consultancy",
+    role: "Assistant Manager — Business Intelligence Unit",
+    company: "Satin Creditcare Network Limited",
     type: "Full-time",
     location: "Gurgaon, India",
-    period: "2023 — Present",
+    period: "Aug 2025 — Present",
     current: true,
     color: "cyan",
+    summary:
+      "Leading BI operations for 250+ NBFC branches — building AI-driven monitoring systems, ETL pipelines, and executive dashboards that track KYC, disbursement, PAR, run rate, conversion ratios, and 20+ branch-level KPIs daily.",
     bullets: [
-      "Architected end-to-end AI reconciliation systems for 3 NBFC clients, cutting daily reconciliation time by 70–80%",
-      "Deployed n8n and Make workflows connecting Salesforce, SAP, and internal ERPs — eliminating 30+ hrs/week of manual data entry",
-      "Owned KPI dashboard infrastructure in Power BI for executive reporting, serving finance and operations leadership",
-      "Built AI-powered document classification pipeline processing 1,000+ PDFs/day with 97% extraction accuracy",
+      "Architect and maintain daily consolidated performance reports for 250+ mirror branches — covering employee status, targets, daily run rate, KYC completion, conversion ratio, and portfolio risk KPIs communicated directly to Business Heads",
+      "Architected AI-driven operational monitoring systems integrating predictive risk models with automated decision workflows for collections and branch performance optimization",
+      "Engineered ETL Excel pipelines processing millions of KYC, disbursement, PAR, and branch performance records for near real-time analytics and leadership visibility",
+      "Built centralized dashboards giving leadership real-time visibility into branch-level KPIs, asset quality metrics, and portfolio risk across all geographies",
+      "Developed state-wise KYC and disbursement forecasting models incorporating geography, seasonality, festivals, political factors, and crop cycles for data-backed target allocation",
+      "Conducted competitive intelligence analytics benchmarking growth, asset quality, and operational efficiency against industry peers",
     ],
   },
   {
-    role: "Data & Automation Analyst",
-    company: "NBFC — Financial Services",
+    role: "Data Analyst",
+    company: "Nectar Lifesciences Ltd.",
     type: "Full-time",
-    location: "Delhi NCR, India",
-    period: "2022 — 2023",
+    location: "Chandigarh, India",
+    period: "Feb 2024 — Aug 2025",
     current: false,
     color: "gold",
+    summary:
+      "Built and automated 4 core management systems (HRMS, PMS, IMS, SMS) using Google Sheets, Apps Script, SQL Server, and Power BI — saving ₹83.7 lakhs in 9 months and eliminating 30+ hours/week of manual data work.",
     bullets: [
-      "Automated monthly MIS reports using Python and SQL, reducing preparation time from 2 days to 90 minutes",
-      "Integrated Zoho CRM with internal loan management system via custom API, syncing 15K+ records weekly",
-      "Created compliance and disbursement dashboards in Google Looker Studio used by 3 departments",
-      "Reduced data discrepancy rate in collections module by 40% through automated validation scripts",
-    ],
-  },
-  {
-    role: "Operations & Systems Analyst",
-    company: "SaaS Platform — B2B",
-    type: "Contract",
-    location: "Remote",
-    period: "2021 — 2022",
-    current: false,
-    color: "cyan",
-    bullets: [
-      "Built lead scoring automation in HubSpot using behavioral triggers, improving SDR efficiency by 35%",
-      "Designed onboarding workflow automation that cut customer time-to-value from 14 days to 4 days",
-      "Implemented Zapier-based integration mesh connecting 8 SaaS tools, replacing fragmented manual processes",
-      "Created SQL-based churn prediction model that identified 68% of churned accounts 30 days in advance",
+      "Streamlined HRMS, PMS, IMS, SMS, and FMS — increased data processing efficiency by 34% and reduced data entry errors by 47% with automated Email/WhatsApp notifications",
+      "Automated daily data transfer from Google Sheets to SQL Server via Apps Script, overcoming the 10M cell limit using 15-day archiving across 20+ PMS and 40+ IMS systems",
+      "Designed 10+ Power BI dashboards tracking OEE, yield, downtime, defect rate, and inventory turnover across production, inventory, CRM, and HRMS for executive reporting",
+      "Built Google Apps Script system tracking entire company order-to-dispatch workflow — from sales inquiry through purchase, production, inventory, and delivery",
+      "Implemented rule-based vendor selection algorithm (L1/L2/L3 ranking) saving ₹13.7 lakhs in 2 months by eliminating procurement bias",
+      "Applied prescriptive analytics for disengaged customer detection with automated marketing notifications — increased customer retention by 28%",
+      "Automated HR feedback forms and employee greeting templates — reduced attrition by 4.3 percentage points",
+      "Total cost savings of ₹83.7 lakhs in 9 months and reporting accuracy improved by 26% through end-to-end system automation",
     ],
   },
 ];
@@ -61,6 +56,7 @@ export default function Experience() {
     <section id="experience" className="section-padding bg-surface/30">
       <div className="max-w-6xl mx-auto px-6">
         <div ref={ref} className="space-y-12">
+
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -91,17 +87,19 @@ export default function Experience() {
                   key={i}
                   initial={{ opacity: 0, x: -30 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.6, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{
+                    duration: 0.6,
+                    delay: i * 0.15,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
                   className="relative"
                 >
                   {/* Timeline dot */}
                   <div
-                    className={`absolute -left-10 mt-1.5 w-4 h-4 rounded-full border-2 flex items-center justify-center ${
+                    className={`absolute -left-10 mt-2 w-4 h-4 rounded-full border-2 flex items-center justify-center ${
                       exp.current
                         ? "border-cyan-accent bg-cyan-soft"
-                        : exp.color === "gold"
-                        ? "border-gold-accent/60 bg-gold-soft"
-                        : "border-border bg-panel"
+                        : "border-gold-accent/60 bg-gold-soft"
                     }`}
                   >
                     {exp.current && (
@@ -111,6 +109,7 @@ export default function Experience() {
 
                   {/* Card */}
                   <div className="glass glass-hover rounded-2xl p-6 md:p-8 space-y-5">
+
                     {/* Header */}
                     <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
                       <div>
@@ -124,7 +123,7 @@ export default function Experience() {
                             </span>
                           )}
                         </div>
-                        <p className="text-sm text-text-secondary mt-0.5">
+                        <p className="text-sm text-text-secondary mt-0.5 font-medium">
                           {exp.company}
                         </p>
                       </div>
@@ -139,6 +138,17 @@ export default function Experience() {
                         </div>
                       </div>
                     </div>
+
+                    {/* Summary */}
+                    <p
+                      className={`text-sm px-4 py-3 rounded-xl border leading-relaxed ${
+                        exp.color === "cyan"
+                          ? "bg-cyan-soft border-cyan-accent/15 text-cyan-accent/90"
+                          : "bg-gold-soft border-gold-accent/15 text-gold-accent/90"
+                      }`}
+                    >
+                      {exp.summary}
+                    </p>
 
                     {/* Divider */}
                     <div className="h-px bg-border/50" />
@@ -160,11 +170,13 @@ export default function Experience() {
                         </li>
                       ))}
                     </ul>
+
                   </div>
                 </motion.div>
               ))}
             </div>
           </div>
+
         </div>
       </div>
     </section>
