@@ -1,28 +1,27 @@
 "use client";
 
 import { useRef } from "react";
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { Calendar, MapPin } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { Calendar, MapPin, Briefcase, ArrowUpRight } from "lucide-react";
 
 const experiences = [
   {
-    role: "Assistant Manager — Business Intelligence Unit",
+    role: "Assistant Manager — BIU",
     company: "Satin Creditcare Network Limited",
     type: "Full-time",
     location: "Gurgaon, India",
-    period: "Aug 2025 — Present",
-    current: true,
+    period: "Sep 2025 — May 2026",
+    current: false,
     color: "cyan",
     summary:
-      "Leading BI operations for 250+ NBFC branches — building AI-driven monitoring systems, ETL pipelines, and executive dashboards that track KYC, disbursement, PAR, run rate, conversion ratios, and 20+ branch-level KPIs daily.",
+      "Designed AI-driven operational intelligence systems for large-scale NBFC workflows — combining predictive models, executive reporting, monitoring pipelines, and branch-level visibility across 250+ locations.",
     bullets: [
-      "Architect and maintain daily consolidated performance reports for 250+ mirror branches — covering employee status, targets, daily run rate, KYC completion, conversion ratio, and portfolio risk KPIs communicated directly to Business Heads",
-      "Architected AI-driven operational monitoring systems integrating predictive risk models with automated decision workflows for collections and branch performance optimization",
-      "Engineered ETL Excel pipelines processing millions of KYC, disbursement, PAR, and branch performance records for near real-time analytics and leadership visibility",
-      "Built centralized dashboards giving leadership real-time visibility into branch-level KPIs, asset quality metrics, and portfolio risk across all geographies",
-      "Developed state-wise KYC and disbursement forecasting models incorporating geography, seasonality, festivals, political factors, and crop cycles for data-backed target allocation",
-      "Conducted competitive intelligence analytics benchmarking growth, asset quality, and operational efficiency against industry peers",
+      "Architected AI-driven operational monitoring systems across 250+ branches, integrating predictive risk models with automated decision workflows for collections and performance optimization",
+      "Engineered API-driven ingestion pipelines processing millions of KYC, disbursement, PAR, and branch performance records for near real-time analytics",
+      "Built centralized dashboards enabling leadership visibility into branch-level KPIs, asset quality, and portfolio risk",
+      "Developed state-wise KYC and disbursement forecasting models incorporating geography, seasonality, festivals, political factors, and crop cycles",
+      "Designed and deployed ARIA (Autonomous Real-time Intelligence Architecture) — a multi-agent AI system prototype for real-time business intelligence, agentic monitoring, and executive insight generation",
+      "Conducted competitive intelligence analytics assessing growth, asset quality, and operational efficiency benchmarks",
     ],
   },
   {
@@ -34,16 +33,15 @@ const experiences = [
     current: false,
     color: "gold",
     summary:
-      "Built and automated 4 core management systems (HRMS, PMS, IMS, SMS) using Google Sheets, Apps Script, SQL Server, and Power BI — saving ₹83.7 lakhs in 9 months and eliminating 30+ hours/week of manual data work.",
+      "Built automation pipelines and AI-enabled reporting systems across pharma operations — connecting Sheets, SQL, n8n, CRM, ERP, and cloud workflows to reduce manual effort and improve decision speed.",
     bullets: [
-      "Streamlined HRMS, PMS, IMS, SMS, and FMS — increased data processing efficiency by 34% and reduced data entry errors by 47% with automated Email/WhatsApp notifications",
-      "Automated daily data transfer from Google Sheets to SQL Server via Apps Script, overcoming the 10M cell limit using 15-day archiving across 20+ PMS and 40+ IMS systems",
-      "Designed 10+ Power BI dashboards tracking OEE, yield, downtime, defect rate, and inventory turnover across production, inventory, CRM, and HRMS for executive reporting",
-      "Built Google Apps Script system tracking entire company order-to-dispatch workflow — from sales inquiry through purchase, production, inventory, and delivery",
-      "Implemented rule-based vendor selection algorithm (L1/L2/L3 ranking) saving ₹13.7 lakhs in 2 months by eliminating procurement bias",
-      "Applied prescriptive analytics for disengaged customer detection with automated marketing notifications — increased customer retention by 28%",
-      "Automated HR feedback forms and employee greeting templates — reduced attrition by 4.3 percentage points",
-      "Total cost savings of ₹83.7 lakhs in 9 months and reporting accuracy improved by 26% through end-to-end system automation",
+      "Managed 50K+ engineering items, 1000+ vendors, and 1000+ pharma raw materials across integrated IMS and PMS ecosystems",
+      "Designed and deployed automation pipelines across Google Sheets, n8n, SQL, CRM, ERP, and cloud systems — reducing manual effort by ~60%",
+      "Built autonomous event-driven workflows with branching logic, monitoring, and failure handling",
+      "Developed churn prediction, CLTV, and demand-forecasting models integrated into automated decision workflows, improving retention metrics by 6%",
+      "Implemented LLM-powered analytics pipelines using Gemini API for automated executive summaries",
+      "Built Power BI dashboards for real-time KPI tracking",
+      "Led A/B testing initiatives improving engagement metrics by 8%",
     ],
   },
 ];
@@ -53,16 +51,14 @@ export default function Experience() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="experience" className="section-padding bg-surface/30">
+    <section id="experience" className="section-padding bg-surface/20">
       <div className="max-w-6xl mx-auto px-6">
         <div ref={ref} className="space-y-12">
-
-          {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="space-y-4"
+            className="space-y-4 max-w-3xl"
           >
             <div className="flex items-center gap-3">
               <span className="font-mono text-xs text-cyan-accent tracking-widest uppercase">
@@ -70,113 +66,119 @@ export default function Experience() {
               </span>
               <div className="h-px flex-1 max-w-20 bg-border" />
             </div>
-            <h2 className="font-display text-3xl md:text-4xl font-700 tracking-tight">
-              Where I&apos;ve Made{" "}
-              <span className="gradient-text-gold">Impact</span>
+            <h2 className="font-display text-3xl md:text-4xl font-700 tracking-tight leading-tight">
+              Experience That Built My <span className="gradient-text-gold">Systems Thinking</span>
             </h2>
+            <p className="text-text-secondary text-base leading-relaxed">
+              My professional background combines analytics, automation, AI implementation, and business process transformation across fintech and pharma environments.
+            </p>
           </motion.div>
 
-          {/* Timeline */}
-          <div className="relative pl-10">
-            {/* Timeline line */}
-            <div className="timeline-line" />
+          <div className="relative">
+            <div className="absolute left-[11px] top-2 bottom-2 w-px bg-gradient-to-b from-cyan-accent/30 via-border to-gold-accent/30" />
 
-            <div className="space-y-10">
+            <div className="space-y-8">
               {experiences.map((exp, i) => (
                 <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  key={exp.company + exp.role}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{
                     duration: 0.6,
-                    delay: i * 0.15,
+                    delay: i * 0.12,
                     ease: [0.22, 1, 0.36, 1],
                   }}
-                  className="relative"
+                  className="relative pl-10"
                 >
-                  {/* Timeline dot */}
                   <div
-                    className={`absolute -left-10 mt-2 w-4 h-4 rounded-full border-2 flex items-center justify-center ${
-                      exp.current
-                        ? "border-cyan-accent bg-cyan-soft"
-                        : "border-gold-accent/60 bg-gold-soft"
+                    className={`absolute left-0 top-2 w-6 h-6 rounded-full border flex items-center justify-center ${
+                      exp.color === "cyan"
+                        ? "border-cyan-accent/50 bg-cyan-soft"
+                        : "border-gold-accent/50 bg-gold-soft"
                     }`}
                   >
-                    {exp.current && (
-                      <div className="w-1.5 h-1.5 rounded-full bg-cyan-accent animate-pulse-slow" />
-                    )}
+                    <div
+                      className={`w-2 h-2 rounded-full ${
+                        exp.color === "cyan" ? "bg-cyan-accent" : "bg-gold-accent"
+                      }`}
+                    />
                   </div>
 
-                  {/* Card */}
-                  <div className="glass glass-hover rounded-2xl p-6 md:p-8 space-y-5">
+                  <div className="glass glass-hover rounded-3xl p-6 md:p-8 space-y-6">
+                    <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-5">
+                      <div className="space-y-3">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest bg-panel border border-border text-text-muted">
+                            <Briefcase size={11} />
+                            {exp.type}
+                          </span>
+                        </div>
 
-                    {/* Header */}
-                    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
-                      <div>
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <h3 className="font-display font-700 text-base md:text-lg text-text-primary">
+                        <div>
+                          <h3 className="font-display font-700 text-lg md:text-xl text-text-primary leading-snug">
                             {exp.role}
                           </h3>
-                          {exp.current && (
-                            <span className="px-2 py-0.5 text-xs font-mono rounded-full bg-cyan-soft border border-cyan-accent/30 text-cyan-accent">
-                              Current
-                            </span>
-                          )}
+                          <p className="text-sm md:text-base text-text-secondary mt-1">
+                            {exp.company}
+                          </p>
                         </div>
-                        <p className="text-sm text-text-secondary mt-0.5 font-medium">
-                          {exp.company}
-                        </p>
                       </div>
-                      <div className="flex flex-col sm:items-end gap-1 flex-shrink-0">
-                        <div className="flex items-center gap-1.5 text-xs text-text-muted">
-                          <Calendar size={11} />
+
+                      <div className="flex flex-col gap-2 lg:items-end text-xs text-text-muted">
+                        <div className="inline-flex items-center gap-2">
+                          <Calendar size={12} />
                           <span>{exp.period}</span>
                         </div>
-                        <div className="flex items-center gap-1.5 text-xs text-text-muted">
-                          <MapPin size={11} />
+                        <div className="inline-flex items-center gap-2">
+                          <MapPin size={12} />
                           <span>{exp.location}</span>
                         </div>
                       </div>
                     </div>
 
-                    {/* Summary */}
-                    <p
-                      className={`text-sm px-4 py-3 rounded-xl border leading-relaxed ${
+                    <div
+                      className={`rounded-2xl border px-4 py-4 ${
                         exp.color === "cyan"
-                          ? "bg-cyan-soft border-cyan-accent/15 text-cyan-accent/90"
-                          : "bg-gold-soft border-gold-accent/15 text-gold-accent/90"
+                          ? "bg-cyan-soft border-cyan-accent/15"
+                          : "bg-gold-soft border-gold-accent/15"
                       }`}
                     >
-                      {exp.summary}
-                    </p>
+                      <p
+                        className={`text-sm leading-relaxed ${
+                          exp.color === "cyan"
+                            ? "text-cyan-accent/90"
+                            : "text-gold-accent/90"
+                        }`}
+                      >
+                        {exp.summary}
+                      </p>
+                    </div>
 
-                    {/* Divider */}
-                    <div className="h-px bg-border/50" />
-
-                    {/* Impact bullets */}
-                    <ul className="space-y-3">
+                    <div className="grid gap-3">
                       {exp.bullets.map((bullet, bi) => (
-                        <li key={bi} className="flex items-start gap-3">
-                          <div
-                            className={`mt-2 w-1.5 h-1.5 rounded-full flex-shrink-0 ${
+                        <div
+                          key={bi}
+                          className="flex items-start gap-3 rounded-2xl bg-panel/50 border border-border/60 px-4 py-3"
+                        >
+                          <ArrowUpRight
+                            size={14}
+                            className={`mt-0.5 flex-shrink-0 ${
                               exp.color === "cyan"
-                                ? "bg-cyan-accent"
-                                : "bg-gold-accent"
+                                ? "text-cyan-accent"
+                                : "text-gold-accent"
                             }`}
                           />
-                          <span className="text-sm text-text-secondary leading-relaxed">
+                          <p className="text-sm text-text-secondary leading-relaxed">
                             {bullet}
-                          </span>
-                        </li>
+                          </p>
+                        </div>
                       ))}
-                    </ul>
-
+                    </div>
                   </div>
                 </motion.div>
               ))}
             </div>
           </div>
-
         </div>
       </div>
     </section>
