@@ -1,37 +1,36 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Brain, Workflow, BarChart3, Target } from "lucide-react";
+import { Brain, Workflow, Mic, Target } from "lucide-react";
 
 const pillars = [
   {
     icon: Brain,
-    title: "AI Integration",
+    title: "Agentic AI Systems",
     description:
-      "Embedding LLMs, document parsers, and intelligent agents into enterprise workflows to automate decision-heavy processes.",
+      "I design production-grade AI systems that combine LLMs, retrieval, reasoning, and decision workflows to automate high-value operational work.",
     color: "cyan",
   },
   {
     icon: Workflow,
-    title: "Process Automation",
+    title: "Automation Architecture",
     description:
-      "End-to-end workflow automation using n8n, Make, and custom Python pipelines — from data ingestion to ERP sync.",
+      "From lead routing and CRM sync to ERP updates and executive reporting, I build event-driven workflows that reduce manual effort and failure points.",
     color: "gold",
   },
   {
-    icon: BarChart3,
-    title: "Finance Systems",
+    icon: Mic,
+    title: "Voice & Conversational AI",
     description:
-      "Deep domain expertise in NBFC operations, reconciliation workflows, KPI dashboards, and compliance automation.",
+      "I create AI-powered chat and voice experiences for lead qualification, customer support, and business interactions that need speed, context, and scale.",
     color: "cyan",
   },
   {
     icon: Target,
-    title: "Business Impact",
+    title: "Business Outcome Focus",
     description:
-      "Every system I build is measured against business outcomes — reduced headcount dependency, faster cycles, higher accuracy.",
+      "Every implementation is designed around ROI — faster turnaround, lower operational dependency, better customer experience, and measurable efficiency gains.",
     color: "gold",
   },
 ];
@@ -60,58 +59,72 @@ export default function About() {
               </div>
 
               <h2 className="font-display text-3xl md:text-4xl font-700 tracking-tight leading-tight">
-                Engineering systems that{" "}
-                <span className="gradient-text-cyan">think,</span> so your
-                teams{" "}
-                <span className="gradient-text-gold">don&apos;t have to.</span>
+                I build <span className="gradient-text-cyan">AI automation systems</span> that
+                eliminate manual work, accelerate decisions, and help teams{" "}
+                <span className="gradient-text-gold">operate at scale.</span>
               </h2>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              transition={{
+                duration: 0.7,
+                delay: 0.1,
+                ease: [0.22, 1, 0.36, 1],
+              }}
               className="space-y-4 text-text-secondary leading-relaxed"
             >
               <p>
-                I&apos;m Yug — a Business Systems Engineer with a focus on
-                making AI work inside real-world financial and operational
-                environments. I bridge the gap between advanced AI tooling and
-                the messy reality of enterprise workflows.
-              </p>
-              <p>
-                My background spans{" "}
+                I&apos;m Yug Pratap Gupta — an{" "}
                 <span className="text-text-primary font-medium">
-                  NBFC operations, SaaS platforms, and fintech infrastructure
+                  AI Automation Architect
                 </span>{" "}
-                — which means I understand both the technical architecture and
-                the business pain behind manual processes. I don&apos;t just
-                automate tasks; I redesign the systems around them.
+                specializing in agentic AI systems, voice AI agents, and
+                end-to-end automation architectures for businesses that want to
+                move faster without adding operational complexity.
               </p>
+
               <p>
-                Currently based in{" "}
+                My work sits at the intersection of{" "}
                 <span className="text-text-primary font-medium">
-                  Gurgaon, India
-                </span>{" "}
-                — working with finance-heavy companies that need scalable,
-                reliable automation that integrates with their existing CRM, ERP,
-                and cloud infrastructure.
+                  AI, workflows, APIs, CRM/ERP integrations, and business
+                  operations
+                </span>
+                . I build systems that can qualify leads, support customers,
+                generate executive insights, automate repetitive processes, and
+                orchestrate decisions across the tools companies already use.
+              </p>
+
+              <p>
+                With experience across{" "}
+                <span className="text-text-primary font-medium">
+                  fintech, pharma, and SaaS-style automation environments
+                </span>
+                , I understand both the technical architecture and the business
+                pressure behind manual operations, slow response cycles, and
+                disconnected systems. My focus is not just shipping automation —
+                it&apos;s building automation that is reliable, scalable, and commercially useful.
               </p>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              transition={{
+                duration: 0.7,
+                delay: 0.2,
+                ease: [0.22, 1, 0.36, 1],
+              }}
               className="flex flex-wrap gap-2"
             >
               {[
-                "Finance Automation",
-                "AI Systems",
-                "NBFC Domain",
-                "Cloud Architecture",
-                "Python",
-                "Workflow Design",
+                "Agentic AI Workflows",
+                "Voice AI Agents",
+                "LLM Orchestration",
+                "CRM / ERP Integration",
+                "n8n & API Automation",
+                "Business Transformation",
               ].map((tag) => (
                 <span
                   key={tag}
@@ -147,7 +160,9 @@ export default function About() {
                   <pillar.icon
                     size={18}
                     className={
-                      pillar.color === "cyan" ? "text-cyan-accent" : "text-gold-accent"
+                      pillar.color === "cyan"
+                        ? "text-cyan-accent"
+                        : "text-gold-accent"
                     }
                   />
                 </div>
