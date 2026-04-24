@@ -1,7 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Download, Mail, MapPin, ChevronDown } from "lucide-react";
+import {
+  ArrowRight,
+  Download,
+  Mail,
+  MapPin,
+  ChevronDown,
+  Sparkles,
+} from "lucide-react";
 
 const stagger = {
   container: {
@@ -12,7 +19,11 @@ const stagger = {
   },
   item: {
     hidden: { opacity: 0, y: 24 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+    },
   },
 };
 
@@ -31,7 +42,7 @@ export default function Hero() {
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-radial from-cyan-accent/8 to-transparent rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-gradient-radial from-gold-accent/6 to-transparent rounded-full blur-2xl pointer-events-none" />
 
-      <div className="max-w-5xl mx-auto px-6 pt-28 pb-20 text-center relative z-10">
+      <div className="max-w-6xl mx-auto px-6 pt-28 pb-20 text-center relative z-10">
         <motion.div
           variants={stagger.container}
           initial="hidden"
@@ -41,8 +52,8 @@ export default function Hero() {
           {/* Status badge */}
           <motion.div variants={stagger.item}>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-border text-xs font-mono text-text-secondary">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              Available for new opportunities
+              <Sparkles size={12} className="text-cyan-accent" />
+              Building AI automation systems for modern businesses
               <span className="text-text-muted">·</span>
               <MapPin size={11} className="text-text-muted" />
               <span>Gurgaon, India</span>
@@ -65,7 +76,7 @@ export default function Hero() {
                 //
               </span>
               <p className="font-body text-lg md:text-xl font-400 text-text-secondary">
-                AI Automation & Business Systems Engineer
+                AI Automation Architect · Agentic AI Systems · Business Transformation
               </p>
               <span className="font-mono text-xs tracking-widest text-text-muted uppercase">
                 //
@@ -74,38 +85,48 @@ export default function Hero() {
           </motion.div>
 
           {/* Value proposition */}
-          <motion.p
-            variants={stagger.item}
-            className="max-w-2xl text-base md:text-lg text-text-secondary leading-relaxed font-300"
-          >
-            I design{" "}
-            <span className="text-text-primary font-medium">
-              AI-driven workflow systems
-            </span>{" "}
-            and{" "}
-            <span className="text-text-primary font-medium">
-              automation architectures
-            </span>{" "}
-            that eliminate operational bottlenecks — saving finance teams 40+
-            hours per week and reducing reconciliation errors by 95%.
-          </motion.p>
-
-          {/* Stats row */}
           <motion.div
             variants={stagger.item}
-            className="flex flex-wrap justify-center gap-6 pt-2"
+            className="max-w-4xl space-y-4"
+          >
+            <p className="text-base md:text-xl text-text-secondary leading-relaxed font-300">
+              I build{" "}
+              <span className="text-text-primary font-medium">
+                production-grade AI systems, voice agents, and workflow automations
+              </span>{" "}
+              that help businesses reduce manual work, qualify leads faster,
+              support customers at scale, and connect fragmented operations
+              across CRM, ERP, APIs, and cloud platforms.
+            </p>
+
+            <p className="text-sm md:text-base text-text-muted max-w-3xl mx-auto leading-relaxed">
+              Trusted across real-world operational environments spanning{" "}
+              <span className="text-text-primary">fintech, pharma, and SaaS-style systems</span>{" "}
+              — with experience building automation architectures, LLM-powered
+              workflows, executive intelligence pipelines, and AI-led business systems
+              designed for measurable impact.
+            </p>
+          </motion.div>
+
+          {/* Proof / stats row */}
+          <motion.div
+            variants={stagger.item}
+            className="grid grid-cols-2 lg:grid-cols-4 gap-4 pt-3 w-full max-w-4xl"
           >
             {[
-              { value: "40+", label: "Hours Saved / Week" },
-              { value: "95%", label: "Error Reduction" },
-              { value: "12+", label: "Systems Integrated" },
-              { value: "3+", label: "Years Experience" },
+              { value: "250+", label: "Branches Monitored" },
+              { value: "60%", label: "Manual Effort Reduced" },
+              { value: "500+", label: "Automation Test Runs" },
+              { value: "24/7", label: "AI System Availability" },
             ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="font-display text-2xl font-700 gradient-text-cyan">
+              <div
+                key={stat.label}
+                className="glass rounded-2xl px-4 py-4 border border-border text-center"
+              >
+                <div className="font-display text-2xl md:text-3xl font-700 gradient-text-cyan">
                   {stat.value}
                 </div>
-                <div className="text-xs text-text-muted mt-0.5 font-mono">
+                <div className="text-[11px] md:text-xs text-text-muted mt-1 font-mono uppercase tracking-wide">
                   {stat.label}
                 </div>
               </div>
@@ -121,11 +142,19 @@ export default function Hero() {
               onClick={scrollToProjects}
               className="group flex items-center gap-2 px-6 py-3 bg-cyan-accent text-canvas font-display font-600 text-sm rounded-xl hover:bg-cyan-accent/90 transition-all duration-200 glow-cyan"
             >
-              View Projects
+              View AI Systems
               <ArrowRight
                 size={16}
                 className="group-hover:translate-x-1 transition-transform"
               />
+            </button>
+
+            <button
+              onClick={scrollToContact}
+              className="group flex items-center gap-2 px-6 py-3 glass border border-gold-accent/30 text-gold-accent font-display font-500 text-sm rounded-xl hover:bg-gold-soft hover:border-gold-accent/50 transition-all duration-200"
+            >
+              <Mail size={16} />
+              Book a Conversation
             </button>
 
             <a
@@ -133,18 +162,23 @@ export default function Hero() {
               download
               className="group flex items-center gap-2 px-6 py-3 glass border border-border text-text-primary font-display font-500 text-sm rounded-xl hover:border-border/80 hover:bg-surface/80 transition-all duration-200"
             >
-              <Download size={16} className="text-text-secondary group-hover:text-text-primary transition-colors" />
+              <Download
+                size={16}
+                className="text-text-secondary group-hover:text-text-primary transition-colors"
+              />
               Download Resume
             </a>
-
-            <button
-              onClick={scrollToContact}
-              className="group flex items-center gap-2 px-6 py-3 glass border border-gold-accent/30 text-gold-accent font-display font-500 text-sm rounded-xl hover:bg-gold-soft hover:border-gold-accent/50 transition-all duration-200"
-            >
-              <Mail size={16} />
-              Contact Me
-            </button>
           </motion.div>
+
+          {/* Trust note */}
+          <motion.p
+            variants={stagger.item}
+            className="text-xs md:text-sm text-text-muted max-w-2xl leading-relaxed"
+          >
+            Best fit for founders, ops teams, sales teams, and businesses looking to
+            deploy AI automation, lead qualification systems, customer support agents,
+            or end-to-end workflow orchestration.
+          </motion.p>
         </motion.div>
 
         {/* Scroll indicator */}
