@@ -1,146 +1,268 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import {
-  BarChart3,
-  Globe,
-  ShoppingCart,
-  Users,
   Bot,
-  TrendingUp,
+  Workflow,
+  Headphones,
+  Mic,
+  Database,
+  BarChart3,
+  Briefcase,
   ChevronDown,
   ExternalLink,
   Layers,
+  IndianRupee,
+  PlayCircle,
+  CheckCircle2,
 } from "lucide-react";
 
 const projects = [
   {
     id: 1,
-    icon: BarChart3,
-    tag: "Manufacturing / Operations",
+    icon: Workflow,
+    tag: "Workflow Automation",
     color: "cyan",
-    title: "Enterprise Manufacturing OEE Intelligence System",
-    subtitle: "Real-time machine-level performance monitoring for production units",
+    title: "Business Workflow Automation System",
+    subtitle:
+      "End-to-end business process automation — 11 steps in 8 seconds, zero human touch",
     problem:
-      "The manufacturing unit had zero real-time machine visibility, no structured tracking of productive vs outage hours, and no root cause analysis for downtime. Manual Excel-based reporting caused delayed insights, no machine-level drilldown, and reactive maintenance instead of proactive scheduling.",
+      "Many businesses still rely on fragmented, manual workflows across email, spreadsheets, internal teams, and disconnected tools. This creates delays, human errors, poor visibility, and unnecessary headcount dependency for repeatable operational processes.",
     solution:
-      "Built a Power BI OEE Intelligence System integrating production, downtime, and rejection data across all machines. Designed a full Star Schema data model with dynamic DAX measures calculating OEE = Availability × Performance × Quality. Enabled machine-wise and reason-wise breakdown with monthly, daily, and yearly slicing for executive-ready dashboards.",
-    stack: ["Power BI", "DAX", "Power Query", "SQL", "Star Schema", "ERP Integration"],
+      "Built an intelligent event-driven automation engine that transforms multi-step business processes into fully automated workflows. The system handles order intake, validation, inventory checks, payment verification, AI-based prioritization, notifications, tracking updates, feedback loops, and monitoring — all without manual intervention.",
+    stack: [
+      "n8n",
+      "OpenAI GPT-4o-mini",
+      "Google Sheets API",
+      "Gmail API",
+      "Slack API",
+      "Twilio",
+      "Webhooks",
+      "REST APIs",
+    ],
     impact: [
-      "Enabled machine-level bottleneck detection across all production units",
-      "Reduced downtime diagnosis time with reason-coded root cause analysis",
-      "Improved preventive maintenance scheduling — shifted from reactive to proactive",
-      "Centralized production performance monitoring for executive leadership",
+      "11 automated steps per order executed in under 10 seconds",
+      "Replaces 30–45 minutes of manual processing per order",
+      "97% success rate across 500+ test executions",
+      "Scales to thousands of transactions without additional headcount",
     ],
     architecture:
-      "ERP exports (CSV/Excel) + SQL tables → Power Query ETL (null handling, normalization) → Star Schema (Fact_Production, Fact_Downtime, Fact_Rejection + Dim_Date, Dim_Machine, Dim_Reason, Dim_Product) → Power BI dashboards with dynamic slicers",
+      "Webhook trigger → validation layer → inventory + payment checks → GPT-4o-mini priority classification → notification orchestration (email / Slack / SMS) → shipping + feedback workflows → audit trail + real-time monitoring dashboard",
+    pricing: "₹75K–3L setup + ₹20K–75K/month",
+    bestFor: "Operations teams, e-commerce, onboarding workflows, loan processing, HR ops",
+    demoLink: "[PLACEHOLDER — add actual link]",
+    videoLink: "[PLACEHOLDER — add actual link]",
   },
   {
     id: 2,
-    icon: Globe,
-    tag: "Export / Sales Strategy",
+    icon: Bot,
+    tag: "AI Sales Automation",
     color: "gold",
-    title: "Global Export Market Intelligence & Competitive Benchmarking",
-    subtitle: "Multi-page Power BI system for export strategy and competitor analysis",
+    title: "AI Lead Qualification & Enrichment Bot",
+    subtitle:
+      "Convert more leads by talking to fewer — AI-powered lead qualification in real time",
     problem:
-      "Management had no market share tracking, region-wise export distribution, or competitor benchmarking capability. Manual reports lacked consolidation, comparative analysis, and market share calculation logic — making strategic export decisions rely on guesswork.",
+      "Sales teams waste time talking to low-intent leads, manually qualifying prospects, and responding too slowly to inbound demand. Traditional forms create friction, while unqualified leads clog the pipeline and reduce sales productivity.",
     solution:
-      "Developed a multi-page Power BI analytics system integrating export sales data, competitor benchmarking datasets, region classification logic, and product segmentation models. Connected public trade data APIs for automated updates and built DAX measures for market share %, top 5 product ranking, and region contribution %.",
-    stack: ["Power BI", "DAX", "Power Query", "Market Trade APIs", "Star Schema"],
+      "Built a conversational AI lead qualification system that engages leads dynamically, asks adaptive qualifying questions, scores them using weighted business criteria, enriches company information from external data sources, updates CRM automatically, and routes leads to the right next step.",
+    stack: [
+      "Python FastAPI",
+      "OpenAI GPT-4o-mini",
+      "n8n",
+      "HubSpot CRM",
+      "Apollo.io API",
+      "Slack",
+      "Gmail",
+      "Streamlit",
+    ],
     impact: [
-      "Enabled data-backed export strategy decisions for leadership",
-      "Identified high-growth markets — APAC and MENA regions prioritized",
-      "Provided product portfolio optimization insights by region",
-      "Supported competitive positioning strategy with live benchmarking",
+      "40–60% increase in sales team productivity",
+      "2–3x faster speed-to-lead with instant bot engagement",
+      "15–30% improvement in conversion rate",
+      "Reduces SDR workload and manual qualification overhead",
     ],
     architecture:
-      "Sales export reports + API market database + product master → Power Query (country-to-region mapping, currency normalization) → Star Schema (Fact_Sales, Dim_Product, Dim_Region, Dim_Country, Dim_Company) → Multi-page Power BI with dynamic year slicer",
+      "Lead capture trigger → AI chat qualification flow → weighted scoring engine → external enrichment APIs → CRM sync with score, transcript, summary, and tags → sales notification / nurture workflow / calendar booking",
+    pricing: "₹75K–3L setup + ₹30K–80K/month",
+    bestFor: "B2B services, SaaS, agencies, consulting firms, inbound sales teams",
+    demoLink: "[PLACEHOLDER]",
+    videoLink: "[PLACEHOLDER]",
   },
   {
     id: 3,
-    icon: ShoppingCart,
-    tag: "Sales / Purchase / Production",
+    icon: Headphones,
+    tag: "AI Support Systems",
     color: "cyan",
-    title: "Enterprise Commercial Performance & Operations Intelligence",
-    subtitle: "Unified BI dashboard covering sales, purchase, and production traceability",
+    title: "AI Customer Support Agent",
+    subtitle:
+      "RAG-powered AI support — 80% ticket deflection, 24/7, under 2 seconds",
     problem:
-      "Leadership had no unified view of sales broken down by segment (Export / Domestic / Interunit), no purchase-to-sales alignment, and no production-to-sales traceability. Existing MIS was manual, time-consuming, error-prone, and offered no drilldown capability.",
+      "Support teams face repetitive queries, slow first-response times, inconsistent agent answers, and rising ticket volumes. Knowledge bases exist, but customers still depend on human agents because information is hard to retrieve quickly and consistently.",
     solution:
-      "Built an interactive Power BI dashboard integrating sales database, purchase data, production reports, customer master, and product master. Created calculated columns for segment classification, YoY growth tracking, monthly trend analysis, and top customer/product ranking via DAX RANKX.",
-    stack: ["Power BI", "DAX", "SQL", "ERP Integration", "Power Query", "Google Sheets"],
+      "Built a production-grade RAG customer support agent that uses semantic retrieval across company knowledge bases, handles multi-turn conversations with memory, classifies user intent, detects sentiment, escalates intelligently with full context, and logs everything back to CRM.",
+    stack: [
+      "Python FastAPI",
+      "OpenAI GPT-4o-mini",
+      "ChromaDB",
+      "OpenAI Embeddings",
+      "n8n",
+      "HubSpot",
+      "Slack",
+      "Gmail",
+      "Streamlit",
+      "HTML/CSS/JS",
+    ],
     impact: [
-      "Automated monthly MIS — eliminated manual report preparation",
-      "Significantly reduced reporting turnaround time across departments",
-      "Improved financial visibility with Export %, Domestic %, and Interunit split",
-      "Enabled faster commercial decisions with YoY and MTD trend comparisons",
+      "60–80% ticket deflection without human intervention",
+      "70% reduction in average first-response time",
+      "24/7 support availability with context-aware responses",
+      "Improves escalation quality with AI-generated handoff summaries",
     ],
     architecture:
-      "Raw ERP exports → Power Query (type normalization, document classification) → Unified sales model → Relationships across Fact_Sales + Dim_Customer + Dim_Product + Dim_Date → Interactive Power BI dashboard",
+      "Embeddable chat widget → FastAPI service → embeddings + ChromaDB retrieval → LLM response generation with session memory → intent + sentiment classification → CRM logging + escalation workflow + analytics dashboard",
+    pricing: "₹1L–4L setup + ₹30K–1L/month",
+    bestFor: "SaaS, product companies, service businesses, internal support desks",
+    demoLink: "[PLACEHOLDER]",
+    videoLink: "[PLACEHOLDER]",
   },
   {
     id: 4,
-    icon: Users,
-    tag: "CRM / Customer Lifecycle",
+    icon: Mic,
+    tag: "Voice AI",
     color: "gold",
-    title: "CRM Revenue & Customer Intelligence Dashboard",
-    subtitle: "Full customer lifecycle analytics — funnel, retention, CLV, and churn",
+    title: "Voice AI Appointment & Inquiry Agent",
+    subtitle:
+      "Human-like voice AI for inbound inquiries, appointment handling, and business call automation",
     problem:
-      "No centralized visibility into sales pipeline health, inquiry-to-order conversion, customer retention, repeat order patterns, or pocket size (average order value). Sales data was scattered across CRM with no funnel analytics, no retention tracking, and no cohort-based behavior analysis.",
+      "Businesses lose leads and create poor customer experiences when calls go unanswered, appointments are handled manually, or teams spend valuable time on repetitive phone interactions that should be automated.",
     solution:
-      "Built a CRM-driven analytics system consolidating sales, inquiries, and customer master data. Implemented full sales funnel tracking, CLV measurement, cohort analysis by first-purchase month, and retention scoring. Built DAX measures for Repeat Purchase Rate, Retention Rate, Churn Rate, Customer Lifetime Value, and Pocket Size analysis.",
-    stack: ["Power BI", "DAX", "CRM Integration", "SQL", "Power Query", "Star Schema"],
+      "Built a voice AI agent capable of handling inbound inquiries, answering common questions, collecting customer details, qualifying intent, and supporting appointment workflows using speech interfaces and AI-driven conversational logic.",
+    stack: [
+      "ElevenLabs",
+      "Web Speech API",
+      "OpenAI API",
+      "n8n",
+      "Webhooks",
+      "Calendar Integration",
+      "REST APIs",
+    ],
     impact: [
-      "Identified revenue concentration — top 20% customers driving 80% revenue",
-      "Discovered and fixed drop-off stage in inquiry → proposal → closure pipeline",
-      "Detected retention gaps by region — enabled proactive churn management",
-      "Reduced manual CRM reporting and enabled data-driven growth strategy",
+      "Automates repetitive inquiry handling without sacrificing responsiveness",
+      "Improves lead capture outside business hours",
+      "Reduces front-desk or sales coordination overhead",
+      "Creates faster and more consistent customer interactions",
     ],
     architecture:
-      "CRM export + inquiry log + order history + customer master → Power Query ETL (customer ID standardization, stage normalization, cohort tagging) → Star Schema (Fact_Inquiries, Fact_Orders, Fact_Sales + 5 dimension tables) → Power BI revenue intelligence dashboards",
+      "Voice input layer → transcription / speech processing → LLM conversation logic → intent handling + workflow triggers → booking / CRM update / follow-up actions → voice response delivery",
+    pricing: "₹1L–3.5L setup + ₹25K–90K/month",
+    bestFor: "Clinics, agencies, service businesses, consulting firms, sales teams",
+    demoLink: "[PLACEHOLDER]",
+    videoLink: "[PLACEHOLDER]",
   },
   {
     id: 5,
-    icon: Bot,
-    tag: "AI / Cloud Automation",
+    icon: Database,
+    tag: "Data + AI Infrastructure",
     color: "cyan",
-    title: "AI-Driven CRM & Supplier Management System",
-    subtitle: "Automated customer and supplier analytics using AI/ML on Google Cloud",
+    title: "Executive Intelligence & Multi-Agent Monitoring System",
+    subtitle:
+      "Agentic business intelligence for operational monitoring, anomaly detection, and executive decision support",
     problem:
-      "No unified customer and supplier analytics — procurement and sales workflows were entirely manual and unoptimized. Customer behavior was invisible, supplier performance was tracked in disconnected spreadsheets, and there was no real-time visibility into procurement decisions.",
+      "Leadership teams often operate with delayed reporting, fragmented KPIs, and no intelligent system to monitor anomalies, summarize risk, or surface decision-ready insights from live business data.",
     solution:
-      "Built an AI/ML-powered system on Google Cloud integrating CRM data, supplier performance metrics, and procurement workflows. Used Cloud SQL for real-time data storage, Python for ML-based behavior pattern analysis, and Power BI for live dashboards. Automated customer birthday/anniversary communications, supplier TAT analysis, and raw material quality scoring (L1/L2/L3 vendor ranking).",
-    stack: ["Google Cloud", "Cloud SQL", "Python", "Power BI", "Apps Script", "ML"],
+      "Designed a multi-agent AI monitoring architecture for operational intelligence that ingests large-scale business records, tracks branch and portfolio KPIs, identifies performance risks, and generates executive-level insights through autonomous monitoring workflows.",
+    stack: [
+      "Python",
+      "SQL",
+      "GCP",
+      "Cloud SQL",
+      "LLM APIs",
+      "Agentic Workflows",
+      "Dashboards",
+      "APIs",
+    ],
     impact: [
-      "Real-time tracking of customer and supplier behavior patterns",
-      "Automated vendor ranking system — eliminated procurement bias",
-      "Integrated CRM automation: birthday wishes, retention alerts, buying pattern recognition",
-      "Optimized procurement workflows with automated purchase order generation",
+      "Supports centralized visibility across 250+ branches",
+      "Processes high-volume KYC, disbursement, PAR, and branch performance records",
+      "Improves leadership response speed with executive-ready intelligence",
+      "Demonstrates scalable AI-driven monitoring for real-world operations",
     ],
     architecture:
-      "CRM + supplier data → Cloud SQL (GCP) → Python ML pipeline (behavior scoring) → Apps Script triggers → Power BI live dashboards → Automated notification system (Email/WhatsApp)",
+      "API-driven data ingestion → centralized storage and KPI layer → forecasting + anomaly workflows → multi-agent monitoring logic → executive insight generation → dashboards and alerting interfaces",
+    pricing: "₹2L–6L setup + ₹50K–1.5L/month",
+    bestFor: "Fintech, NBFCs, multi-branch businesses, operations leadership teams",
+    demoLink: "[PLACEHOLDER]",
+    videoLink: "[PLACEHOLDER]",
   },
   {
     id: 6,
-    icon: TrendingUp,
-    tag: "AI / NLP / Finance",
+    icon: BarChart3,
+    tag: "AI Analytics Automation",
     color: "gold",
-    title: "Stock Market Analyzer — NLP & Sentiment Analysis",
-    subtitle: "News-based stock movement prediction using NLP Transformers",
+    title: "LLM-Powered Executive Summary & Reporting Pipeline",
+    subtitle:
+      "Automated reporting pipelines that turn operational data into executive-ready summaries",
     problem:
-      "No systematic way to gauge market sentiment from financial news for stock movement prediction. Traders and analysts were reading news manually with no structured sentiment scoring, making it impossible to quantify market mood or correlate news sentiment with price movement.",
+      "Leaders spend too much time reading raw reports and teams waste hours preparing summaries manually. Even when dashboards exist, decision-makers still need concise narratives, highlights, and anomaly explanations.",
     solution:
-      "Developed a news-based stock market prediction model using HuggingFace Transformers for NLP sentiment analysis and BeautifulSoup for live news scraping. Extracted sentiment scores (positive/negative/neutral) from news articles for selected stocks and correlated scores with historical price movement data using Scikit-learn models.",
-    stack: ["Python", "HuggingFace Transformers", "BeautifulSoup", "Scikit-learn", "NLP", "Pandas"],
+      "Built an LLM-powered reporting workflow that transforms structured business data into concise executive summaries, trend analysis, and action-oriented narratives. The system integrates data sources, automates preprocessing, generates summaries, and distributes them through operational channels.",
+    stack: [
+      "Gemini API",
+      "Python",
+      "SQL",
+      "n8n",
+      "Google Sheets",
+      "Dashboards",
+      "Email Automation",
+    ],
     impact: [
-      "Automated sentiment extraction from live financial news feeds",
-      "Provided directional signals (bullish/bearish/neutral) for selected stocks",
-      "Eliminated manual news reading — full pipeline runs automatically",
-      "Built foundation for quantitative sentiment-driven trading signals",
+      "Reduces manual reporting effort for business teams",
+      "Improves executive consumption of data-heavy reports",
+      "Creates faster reporting cycles with more actionable summaries",
+      "Bridges analytics outputs with decision-making workflows",
     ],
     architecture:
-      "BeautifulSoup news scraper → text preprocessing → HuggingFace Transformer (sentiment classification) → Scikit-learn correlation model → sentiment score output with directional stock signal",
+      "Operational data sources → preprocessing + business logic layer → LLM summary generation → formatted narrative outputs → automated delivery via email / sheets / dashboard-connected workflows",
+    pricing: "₹60K–2L setup + ₹15K–50K/month",
+    bestFor: "Leadership teams, BI teams, ops reporting functions, founders",
+    demoLink: "[PLACEHOLDER]",
+    videoLink: "[PLACEHOLDER]",
+  },
+  {
+    id: 7,
+    icon: Briefcase,
+    tag: "Business Transformation",
+    color: "cyan",
+    title: "Custom CRM–ERP–AI Automation Stack",
+    subtitle:
+      "Connected systems architecture for businesses stuck with disconnected tools and manual handoffs",
+    problem:
+      "Many growing businesses suffer from fragmented data across CRM, ERP, spreadsheets, forms, support tools, and messaging apps. Teams manually move data between systems, causing delays, inconsistency, and operational blind spots.",
+    solution:
+      "Built custom automation stacks that connect CRM, ERP, databases, dashboards, APIs, and AI-powered workflows into a single operational architecture. These systems centralize data movement, trigger downstream actions automatically, and create end-to-end visibility.",
+    stack: [
+      "n8n",
+      "Make",
+      "Zapier",
+      "REST APIs",
+      "Webhooks",
+      "CRM Integrations",
+      "ERP Integrations",
+      "FastAPI",
+    ],
+    impact: [
+      "Eliminates repetitive cross-tool manual work",
+      "Creates reliable sync between customer, operational, and reporting systems",
+      "Reduces delays caused by disconnected handoffs",
+      "Establishes scalable infrastructure for future AI implementations",
+    ],
+    architecture:
+      "Forms / CRM / ERP / database / support tools → webhook + API orchestration layer → validation and business rules → AI / automation triggers → reporting + notifications + synchronized records across systems",
+    pricing: "₹1L–5L setup + ₹25K–1L/month",
+    bestFor: "Scaling businesses with fragmented operations and multiple internal tools",
+    demoLink: "[PLACEHOLDER]",
+    videoLink: "[PLACEHOLDER]",
   },
 ];
 
@@ -157,12 +279,15 @@ function ProjectCard({ project, index, isInView }: ProjectCardProps) {
     <motion.div
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.7, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+      transition={{
+        duration: 0.7,
+        delay: index * 0.08,
+        ease: [0.22, 1, 0.36, 1],
+      }}
       className={`glass glass-hover rounded-2xl overflow-hidden group transition-all duration-300 ${
         expanded ? "border-cyan-accent/20" : ""
       }`}
     >
-      {/* Card header */}
       <div className="p-6 md:p-7 space-y-4">
         {/* Top row */}
         <div className="flex items-start justify-between gap-4">
@@ -177,20 +302,24 @@ function ProjectCard({ project, index, isInView }: ProjectCardProps) {
               <project.icon
                 size={20}
                 className={
-                  project.color === "cyan" ? "text-cyan-accent" : "text-gold-accent"
+                  project.color === "cyan"
+                    ? "text-cyan-accent"
+                    : "text-gold-accent"
                 }
               />
             </div>
             <div>
               <span
                 className={`text-xs font-mono tracking-wide ${
-                  project.color === "cyan" ? "text-cyan-accent" : "text-gold-accent"
+                  project.color === "cyan"
+                    ? "text-cyan-accent"
+                    : "text-gold-accent"
                 }`}
               >
                 {project.tag}
               </span>
               <div className="text-xs text-text-muted mt-0.5">
-                Case Study 0{project.id}
+                System Build 0{project.id}
               </div>
             </div>
           </div>
@@ -208,6 +337,27 @@ function ProjectCard({ project, index, isInView }: ProjectCardProps) {
           </p>
         </div>
 
+        {/* Meta info */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          <div className="px-3 py-2 rounded-xl bg-panel border border-border">
+            <div className="text-[10px] font-mono uppercase tracking-widest text-text-muted mb-1">
+              Best For
+            </div>
+            <div className="text-xs text-text-secondary leading-relaxed">
+              {project.bestFor}
+            </div>
+          </div>
+          <div className="px-3 py-2 rounded-xl bg-panel border border-border">
+            <div className="flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-widest text-text-muted mb-1">
+              <IndianRupee size={11} />
+              Pricing
+            </div>
+            <div className="text-xs text-text-secondary leading-relaxed">
+              {project.pricing}
+            </div>
+          </div>
+        </div>
+
         {/* Tech stack */}
         <div className="flex flex-wrap gap-1.5">
           {project.stack.map((tech) => (
@@ -220,7 +370,7 @@ function ProjectCard({ project, index, isInView }: ProjectCardProps) {
           ))}
         </div>
 
-        {/* Impact preview — top 2 */}
+        {/* Impact preview */}
         <div className="grid grid-cols-1 gap-2">
           {project.impact.slice(0, 2).map((item, i) => (
             <div
@@ -234,6 +384,28 @@ function ProjectCard({ project, index, isInView }: ProjectCardProps) {
               {item}
             </div>
           ))}
+        </div>
+
+        {/* CTA row */}
+        <div className="flex flex-wrap gap-2 pt-1">
+          <a
+            href={project.demoLink}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-medium bg-cyan-accent text-canvas hover:opacity-90 transition-opacity"
+          >
+            <ExternalLink size={13} />
+            Demo
+          </a>
+          <a
+            href={project.videoLink}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-medium border border-border text-text-primary hover:bg-panel transition-colors"
+          >
+            <PlayCircle size={13} />
+            Walkthrough
+          </a>
         </div>
 
         {/* Expand toggle */}
@@ -251,7 +423,6 @@ function ProjectCard({ project, index, isInView }: ProjectCardProps) {
         </button>
       </div>
 
-      {/* Expanded content */}
       <AnimatePresence initial={false}>
         {expanded && (
           <motion.div
@@ -262,7 +433,6 @@ function ProjectCard({ project, index, isInView }: ProjectCardProps) {
             className="overflow-hidden"
           >
             <div className="px-6 md:px-7 pb-7 space-y-5 border-t border-border/50 pt-5">
-
               {/* Problem */}
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
@@ -302,13 +472,16 @@ function ProjectCard({ project, index, isInView }: ProjectCardProps) {
                 </div>
               </div>
 
-              {/* Full impact */}
+              {/* Business impact */}
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
-                  <div
-                    className={`w-1.5 h-1.5 rounded-full ${
-                      project.color === "cyan" ? "bg-cyan-accent" : "bg-gold-accent"
-                    }`}
+                  <CheckCircle2
+                    size={12}
+                    className={
+                      project.color === "cyan"
+                        ? "text-cyan-accent"
+                        : "text-gold-accent"
+                    }
                   />
                   <h4 className="text-xs font-mono text-text-muted uppercase tracking-widest">
                     Business Impact
@@ -333,6 +506,47 @@ function ProjectCard({ project, index, isInView }: ProjectCardProps) {
                 </div>
               </div>
 
+              {/* Commercial fit */}
+              <div className="grid md:grid-cols-2 gap-3">
+                <div className="rounded-xl bg-panel border border-border p-4">
+                  <div className="text-[10px] font-mono uppercase tracking-widest text-text-muted mb-2">
+                    Best Fit
+                  </div>
+                  <p className="text-sm text-text-secondary leading-relaxed">
+                    {project.bestFor}
+                  </p>
+                </div>
+                <div className="rounded-xl bg-panel border border-border p-4">
+                  <div className="text-[10px] font-mono uppercase tracking-widest text-text-muted mb-2">
+                    Typical Engagement
+                  </div>
+                  <p className="text-sm text-text-secondary leading-relaxed">
+                    {project.pricing}
+                  </p>
+                </div>
+              </div>
+
+              {/* Bottom CTA */}
+              <div className="pt-1 flex flex-wrap gap-2">
+                <a
+                  href={project.demoLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-medium bg-cyan-accent text-canvas hover:opacity-90 transition-opacity"
+                >
+                  <ExternalLink size={13} />
+                  Open Demo
+                </a>
+                <a
+                  href={project.videoLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-medium border border-border text-text-primary hover:bg-panel transition-colors"
+                >
+                  <PlayCircle size={13} />
+                  Watch Walkthrough
+                </a>
+              </div>
             </div>
           </motion.div>
         )}
@@ -349,7 +563,6 @@ export default function Projects() {
     <section id="projects" className="section-padding">
       <div className="max-w-6xl mx-auto px-6">
         <div ref={ref} className="space-y-12">
-
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -363,19 +576,34 @@ export default function Projects() {
               </span>
               <div className="h-px flex-1 max-w-20 bg-border" />
             </div>
+
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-              <h2 className="font-display text-3xl md:text-4xl font-700 tracking-tight">
-                Case Studies &{" "}
-                <span className="gradient-text-cyan">System Builds</span>
-              </h2>
-              <p className="text-text-secondary text-sm max-w-xs">
-                6 real-world systems built across manufacturing, finance, CRM, AI,
-                and export intelligence.
-              </p>
+              <div className="space-y-3">
+                <h2 className="font-display text-3xl md:text-4xl font-700 tracking-tight leading-tight">
+                  AI Systems, Automation Workflows &{" "}
+                  <span className="gradient-text-cyan">Client-Ready Solutions</span>
+                </h2>
+                <p className="text-text-secondary text-sm md:text-base max-w-3xl leading-relaxed">
+                  These are the core systems I build for businesses looking to
+                  automate operations, qualify leads faster, support customers at
+                  scale, and connect fragmented processes through AI-driven
+                  infrastructure.
+                </p>
+              </div>
+
+              <div className="rounded-2xl glass px-4 py-3 border border-border max-w-xs">
+                <div className="text-[10px] font-mono uppercase tracking-widest text-text-muted mb-1">
+                  Positioning
+                </div>
+                <p className="text-xs text-text-secondary leading-relaxed">
+                  Each project below is both a case study and a service model I
+                  can adapt to your business workflow.
+                </p>
+              </div>
             </div>
           </motion.div>
 
-          {/* Projects grid — 2 columns on large screens */}
+          {/* Projects grid */}
           <div className="grid md:grid-cols-2 gap-6">
             {projects.map((project, index) => (
               <ProjectCard
@@ -386,7 +614,6 @@ export default function Projects() {
               />
             ))}
           </div>
-
         </div>
       </div>
     </section>
